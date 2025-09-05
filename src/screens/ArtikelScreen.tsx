@@ -31,6 +31,20 @@ const dummyArticles = [
       'Work from home bisa produktif kalau tahu cara mengatur waktu dengan baik...',
     image: 'https://picsum.photos/400/200?random=3',
   },
+  {
+    id: '4',
+    title: 'Produktivitas Kerja dari Rumah',
+    content:
+      'Work from home bisa produktif kalau tahu cara mengatur waktu dengan baik...',
+    image: 'https://picsum.photos/400/200?random=4',
+  },
+  {
+    id: '5',
+    title: 'Produktivitas Kerja',
+    content:
+      'Work from home bisa produktif kalau tahu cara mengatur waktu dengan baik...',
+    image: 'https://picsum.photos/400/200?random=5',
+  },
 ];
 
 export default function ArtikelScreen() {
