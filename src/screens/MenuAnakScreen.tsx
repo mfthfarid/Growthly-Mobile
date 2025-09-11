@@ -7,6 +7,7 @@ import {
   FlatList,
   ListRenderItem,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const dataAnak = [
   { id: '1', nama: 'Budi', umur: 10 },
@@ -15,8 +16,13 @@ const dataAnak = [
 ];
 
 export default function App() {
+  const navigation = useNavigation<any>();
+
   const renderCard: ListRenderItem<any> = ({ item, index }) => (
-    <View style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => navigation.navigate('DetailArtikel', { dataAnak: item })}
+    >
       {/* Nomor di kiri */}
       <View style={styles.nomorWrapper}>
         <Text style={styles.nomor}>{index + 1}</Text>
@@ -27,7 +33,7 @@ export default function App() {
         <Text style={styles.nama}>{item.nama}</Text>
         <Text style={styles.umur}>Umur: {item.umur} tahun</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   return (

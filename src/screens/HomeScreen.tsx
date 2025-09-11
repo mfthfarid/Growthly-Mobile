@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -7,7 +8,6 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 const dummyArticles = [
   {
