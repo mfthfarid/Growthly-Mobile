@@ -85,6 +85,9 @@ function AppTabs() {
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
 
   return (
     <NavigationContainer>

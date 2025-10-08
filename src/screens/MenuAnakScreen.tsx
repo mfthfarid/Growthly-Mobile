@@ -21,7 +21,7 @@ export default function App() {
   const renderCard: ListRenderItem<any> = ({ item, index }) => (
     <TouchableOpacity
       style={styles.card}
-      onPress={() => navigation.navigate('DetailArtikel', { dataAnak: item })}
+      onPress={() => navigation.navigate('DetailAnak', { dataAnak: item })}
     >
       {/* Nomor di kiri */}
       <View style={styles.nomorWrapper}>
