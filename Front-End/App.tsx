@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
+import ForgotPasswordScreen from './src/screens/Auth/ForgotPasswordScreen';
+import RegisterScreen from './src/screens/Auth/RegisterScreen';
 import LoginScreen from './src/screens/Auth/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import ArtikelScreen from './src/screens/ArtikelScreen';
@@ -100,6 +102,16 @@ export default function App() {
               <LoginScreen {...props} onLogin={() => setIsLoggedIn(true)} />
             )}
           </Stack.Screen>
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPasswordScreen}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       )}
     </NavigationContainer>
