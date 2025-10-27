@@ -317,6 +317,7 @@
 // });
 
 import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import {
   View,
   Text,
@@ -328,7 +329,7 @@ import {
 } from 'react-native';
 import CustomInput from '../../components/CustomInput';
 
-const LoginScreen = ({ navigation }: any) => {
+const LoginScreen = ({ navigation, onLogin }: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -336,11 +337,14 @@ const LoginScreen = ({ navigation }: any) => {
   const [showError, setShowError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
+  // const navigate = useNavigate();
+
   const handleLogin = () => {
     if (!email || !password) {
       setShowError(true);
     } else {
-      setShowSuccess(true);
+      // navigation.navigate('Beranda');
+      onLogin(); // ini akan men-trigger setIsLoggedIn(true)
     }
   };
 
