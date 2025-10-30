@@ -1,0 +1,145 @@
+import { StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
+  dateInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 20,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+  },
+  dateText: {
+    fontSize: 16,
+    color: '#333',
+  },
+  buttonDisabled: {
+    backgroundColor: '#ccc',
+  },
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#fff',
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 8,
+    color: '#333',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 20,
+    fontSize: 16,
+    backgroundColor: '#fff',
+  },
+  readOnlyInput: {
+    backgroundColor: '#f5f5f5',
+    color: '#666',
+    opacity: 1,
+  },
+  genderContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  genderButton: {
+    flex: 1,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    alignItems: 'center',
+    marginHorizontal: 4,
+  },
+  genderButtonActive: {
+    backgroundColor: '#4CAF50',
+    borderColor: '#4CAF50',
+  },
+  genderButtonText: {
+    fontSize: 16,
+    color: '#333',
+  },
+  genderButtonTextActive: {
+    color: '#fff',
+    fontWeight: '600',
+  },
+  button: {
+    backgroundColor: '#2196F3',
+    padding: 14,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalBox: {
+    width: '80%',
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 24,
+    alignItems: 'center',
+  },
+  successCircle: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: '#4CAF50',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  successCheck: {
+    color: '#fff',
+    fontSize: 28,
+    fontWeight: 'bold',
+  },
+  errorCircle: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: '#F44336',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  errorX: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    color: '#333',
+  },
+  modalMessage: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#666',
+    marginBottom: 16,
+  },
+  closeBtn: {
+    backgroundColor: '#2196F3',
+    paddingHorizontal: 20,
+    paddingVertical: 8,
+    borderRadius: 8,
+  },
+  closeText: {
+    color: '#fff',
+    fontSize: 16,
+  },
+});

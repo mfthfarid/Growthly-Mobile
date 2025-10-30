@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
+import { styles } from './styles/DetailArtikelScreenStyles';
 
 export default function DetailArtikelScreen({ route }: any) {
   const { article } = route.params;
@@ -12,10 +13,3 @@ export default function DetailArtikelScreen({ route }: any) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 16 },
-  image: { width: '100%', height: 200, borderRadius: 12, marginBottom: 16 },
-  title: { fontSize: 20, fontWeight: 'bold', marginBottom: 12 },
-  content: { fontSize: 16, lineHeight: 22, color: '#333' },
-});
