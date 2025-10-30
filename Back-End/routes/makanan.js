@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const makananController = require("../controllers/makanancontroller");
 
+router.get("/stats", makananController.getMakananStats);
+
 // Tambah makanan (dengan foto)
 router.post("/", makananController.upload, makananController.addMakanan);
 

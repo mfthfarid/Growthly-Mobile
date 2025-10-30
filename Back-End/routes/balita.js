@@ -1,22 +1,23 @@
+// routes/balita.js
 const express = require("express");
 const router = express.Router();
+const verifyToken = require("../middlewares/authMiddleware"); // ✅ import middleware
+
 const {
   addBalita,
   getBalita,
   updateBalita,
   deleteBalita,
+  getBalitaStats,
+  getBalitaByOrangtua,
 } = require("../controllers/balitacontroller");
 
-// Tambah balita
-router.post("/", addBalita);
-
-// Ambil semua balita (opsional filter by id_orangtua)
-router.get("/", getBalita);
-
-// Update balita
-router.put("/:id_balita", updateBalita);
-
-// Hapus balita
-router.delete("/:id_balita", deleteBalita);
+// Gunakan verifyToken di SEMUA route yang butuh autentikasi
+router.get("/stats", verifyToken, getBalitaStats);
+router.post("/", verifyToken, addBalita);
+router.get("/", verifyToken, getBalita);
+router.put("/:id_balita", verifyToken, updateBalita);
+router.delete("/:id_balita", verifyToken, deleteBalita);
+router.get("/mybalita", verifyToken, getBalitaByOrangtua);
 
 module.exports = router;

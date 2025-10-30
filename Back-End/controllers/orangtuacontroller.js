@@ -1,5 +1,5 @@
 const { Orangtua, User } = require("../models");
-
+const { Op } = require("sequelize");
 // Tambah data orangtua
 exports.addOrangtua = async (req, res) => {
   try {
@@ -91,5 +91,46 @@ exports.deleteOrangtua = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Gagal menghapus orangtua" });
+  }
+};
+
+exports.getOrangtuaStats = async (req, res) => {
+  try {
+    const now = new Date();
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const startOfYear = new Date(now.getFullYear(), 0, 1);
+
+    // Total semua orang tua
+    const totalOrangtua = await Orangtua.count();
+
+    // Total orang tua bulan ini
+    const totalBulanIni = await Orangtua.count({
+      where: {
+        created_at: {
+          [Op.gte]: startOfMonth,
+        },
+      },
+    });
+
+    // Total orang tua tahun ini
+    const totalTahunIni = await Orangtua.count({
+      where: {
+        created_at: {
+          [Op.gte]: startOfYear,
+        },
+      },
+    });
+
+    res.json({
+      message: "Statistik orang tua berhasil diambil ✅",
+      stats: {
+        total_orangtua: totalOrangtua,
+        total_bulan_ini: totalBulanIni,
+        total_tahun_ini: totalTahunIni,
+      },
+    });
+  } catch (err) {
+    console.error("Error getOrangtuaStats:", err);
+    res.status(500).json({ message: "Gagal mengambil statistik orang tua" });
   }
 };

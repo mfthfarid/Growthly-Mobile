@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const db = require("./models");
 
 // Import routes
@@ -10,6 +11,9 @@ const makananRoutes = require("./routes/makanan");
 const artikelRoutes = require("./routes/artikel");
 const pengukuranGiziRoutes = require("./routes/pengukurangizi");
 const orangtuaRoutes = require("./routes/orangtua");
+const dashboardRoutes = require("./routes/dashboardRoutes");
+
+const prediksiRoutes = require("./routes/prediksiRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -33,6 +37,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Backend API jalan 🚀");
 });
+// Di server.js
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/balita", balitaRoutes);
@@ -40,6 +46,8 @@ app.use("/api/makanan", makananRoutes);
 app.use("/api/artikel", artikelRoutes);
 app.use("/api/orangtua", orangtuaRoutes);
 app.use("/api/pengukuran", pengukuranGiziRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/predict", prediksiRoutes); // Tambahkan ini
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

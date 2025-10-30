@@ -1,4 +1,4 @@
-const { PengukuranGizi, Balita } = require("../models");
+const { PengukuranGizi, Balita, sequelize } = require("../models");
 
 // Tambah pengukuran gizi
 exports.addPengukuran = async (req, res) => {
@@ -95,5 +95,56 @@ exports.deletePengukuran = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Gagal menghapus pengukuran" });
+  }
+};
+
+exports.getGiziStats = async (req, res) => {
+  try {
+    // Hitung total balita unik yang memiliki pengukuran
+    const totalBalita = await PengukuranGizi.count({
+      distinct: true,
+      col: "id_balita",
+    });
+
+    // Hitung jumlah balita unik per kategori status_gizi
+    const counts = await PengukuranGizi.findAll({
+      attributes: [
+        "status_gizi",
+        [sequelize.fn("COUNT", sequelize.col("id_balita")), "jumlah"],
+      ],
+      group: ["status_gizi"],
+      raw: true,
+    });
+
+    // Inisialisasi default (semua key lowercase)
+    const stats = {
+      stunted: 0,
+      "severely stunted": 0,
+      tinggi: 0,
+      normal: 0,
+    };
+
+    // Isi berdasarkan hasil query — ubah key menjadi lowercase
+    counts.forEach((item) => {
+      const key = item.status_gizi.toLowerCase(); // 🔁 Ubah ke lowercase
+      if (stats.hasOwnProperty(key)) {
+        stats[key] = parseInt(item.jumlah, 10);
+      }
+    });
+
+    // Kirim response (gunakan key lowercase)
+    res.json({
+      message: "Statistik gizi balita berhasil diambil ✅",
+      stats: {
+        total_balita: totalBalita,
+        stunted: stats.stunted,
+        severely_stunted: stats["severely stunted"],
+        tinggi: stats.tinggi,
+        normal: stats.normal,
+      },
+    });
+  } catch (err) {
+    console.error("Error getGiziStats:", err);
+    res.status(500).json({ message: "Gagal mengambil statistik gizi balita" });
   }
 };
