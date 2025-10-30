@@ -107,3 +107,18 @@ exports.getMakananById = async (req, res) => {
 
 // Export multer middleware
 exports.upload = upload.single("foto");
+
+exports.getMakananStats = async (req, res) => {
+  try {
+    const totalMakanan = await Makanan.count();
+    res.json({
+      message: "Statistik artikel berhasil diambil ✅",
+      stats: {
+        total_makanan: totalMakanan,
+      },
+    });
+  } catch (err) {
+    console.error("Error getMakananStats:", err);
+    res.status(500).json({ message: "Gagal mengambil statistik Makanan" });
+  }
+};

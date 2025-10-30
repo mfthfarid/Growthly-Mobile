@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const artikelController = require("../controllers/artikelcontroller");
 
+router.get("/stats", artikelController.getArtikelStats);
+
 router.post("/", artikelController.upload, artikelController.addArtikel);
 
 router.get("/", artikelController.getArtikel);

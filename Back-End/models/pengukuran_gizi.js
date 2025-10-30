@@ -14,10 +14,15 @@ module.exports = (sequelize, DataTypes) => {
       tinggi_badan: { type: DataTypes.FLOAT, allowNull: false },
       berat_badan: { type: DataTypes.FLOAT, allowNull: false },
       status_gizi: {
-        type: DataTypes.ENUM("Normal", "Stunting", "Gizi Kurang", "Gizi Buruk"),
+        type: DataTypes.ENUM("Normal", "Stunted", "Severely Stunted", "Tinggi"),
         allowNull: false,
       },
       catatan: { type: DataTypes.TEXT, allowNull: true },
+      nama_posyandu: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
       created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     },
     { tableName: "pengukurangizi", timestamps: false }

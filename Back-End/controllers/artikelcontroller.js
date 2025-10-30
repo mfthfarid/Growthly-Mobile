@@ -107,3 +107,20 @@ exports.deleteArtikel = async (req, res) => {
 
 // Export multer middleware
 exports.upload = upload.single("foto");
+
+exports.getArtikelStats = async (req, res) => {
+  try {
+    // Hanya hitung semua baris di tabel Artikel
+    const totalArtikel = await Artikel.count();
+    console.log("[BACKEND] Total artikel dihitung:", totalArtikel); // Tambahkan log ini
+    res.json({
+      message: "Statistik artikel berhasil diambil ✅",
+      stats: {
+        total_artikel: totalArtikel,
+      },
+    });
+  } catch (err) {
+    console.error("Error getArtikelStats:", err);
+    res.status(500).json({ message: "Gagal mengambil statistik artikel" });
+  }
+};

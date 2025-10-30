@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pengukuranController = require("../controllers/pengukurangizicontroller");
 
+router.get("/stats", pengukuranController.getGiziStats);
 // Tambah pengukuran
 router.post("/", pengukuranController.addPengukuran);
 
