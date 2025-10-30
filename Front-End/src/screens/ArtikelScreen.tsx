@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import styles from './styles/ArtikelScreenStyles';
 
 const dummyArticles = [
   {
@@ -33,16 +27,16 @@ const dummyArticles = [
   },
   {
     id: '4',
-    title: 'Produktivitas Kerja dari Rumah',
+    title: 'Hidup Sehat dengan Pola Tidur Teratur',
     content:
-      'Work from home bisa produktif kalau tahu cara mengatur waktu dengan baik...',
+      'Kualitas tidur sangat berpengaruh pada imunitas tubuh dan konsentrasi...',
     image: 'https://picsum.photos/400/200?random=4',
   },
   {
     id: '5',
-    title: 'Produktivitas Kerja',
+    title: 'Manfaat Jalan Kaki di Pagi Hari',
     content:
-      'Work from home bisa produktif kalau tahu cara mengatur waktu dengan baik...',
+      'Selain menyehatkan jantung, jalan pagi juga membantu memperbaiki mood...',
     image: 'https://picsum.photos/400/200?random=5',
   },
 ];
@@ -67,32 +61,14 @@ export default function ArtikelScreen() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.header}>📰 Daftar Artikel</Text>
       <FlatList
         data={dummyArticles}
         keyExtractor={item => item.id}
         renderItem={renderItem}
         contentContainerStyle={{ paddingBottom: 20 }}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f8f9fa', padding: 16 },
-  card: {
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    marginBottom: 15,
-    overflow: 'hidden',
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  image: { width: 100, height: 100 },
-  cardContent: { flex: 1, padding: 10, justifyContent: 'center' },
-  title: { fontSize: 16, fontWeight: '600', marginBottom: 4 },
-  excerpt: { fontSize: 13, color: '#666' },
-});

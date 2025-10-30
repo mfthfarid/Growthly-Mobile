@@ -1,114 +1,100 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
   FlatList,
+  ActivityIndicator,
   ListRenderItem,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {
+  useNavigation,
+  useFocusEffect,
+  useRoute,
+} from '@react-navigation/native';
+import { styles } from './styles/AnakScreenStyles';
+import { getMyBalita } from '../service/balitaService';
 
-const dataAnak = [
-  { id: '1', nama: 'Budi', umur: 10 },
-  { id: '2', nama: 'Siti', umur: 8 },
-  { id: '3', nama: 'Andi', umur: 6 },
-];
+interface Balita {
+  id_balita: number;
+  nama_balita: string;
+  tgl_lahir: string;
+  jenis_kelamin: 'L' | 'P';
+}
 
-export default function App() {
+export default function AnakScreen() {
   const navigation = useNavigation<any>();
+  const route = useRoute<any>();
+  const [dataAnak, setDataAnak] = useState<Balita[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const renderCard: ListRenderItem<any> = ({ item, index }) => (
+  const fetchDataAnak = async () => {
+    try {
+      const response = await getMyBalita();
+      setDataAnak(response.balitas || []);
+    } catch (error) {
+      console.error('Gagal mengambil data anak:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataAnak();
+  }, []);
+
+  // ✅ Update daftar jika ada anak baru dari TambahAnakScreen
+  useFocusEffect(
+    useCallback(() => {
+      if (route.params?.newBalita) {
+        setDataAnak(prev => [route.params.newBalita, ...prev]);
+        navigation.setParams({ newBalita: undefined });
+      }
+    }, [route.params?.newBalita]),
+  );
+
+  const renderCard: ListRenderItem<Balita> = ({ item, index }) => (
     <TouchableOpacity
       style={styles.card}
       onPress={() => navigation.navigate('DetailAnak', { dataAnak: item })}
     >
-      {/* Nomor di kiri */}
       <View style={styles.nomorWrapper}>
         <Text style={styles.nomor}>{index + 1}</Text>
       </View>
 
-      {/* Nama + umur di kanan */}
       <View style={styles.infoWrapper}>
-        <Text style={styles.nama}>{item.nama}</Text>
-        <Text style={styles.umur}>Umur: {item.umur} tahun</Text>
+        <Text style={styles.nama}>{item.nama_balita}</Text>
+        <Text style={styles.umur}>Tanggal Lahir: {item.tgl_lahir}</Text>
+        <Text style={styles.umur}>Jenis Kelamin: {item.jenis_kelamin}</Text>
       </View>
     </TouchableOpacity>
   );
 
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color="#6B4EFF" />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      {/* Button tambah anak di pojok kanan atas */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('TambahAnak')}
+        >
           <Text style={styles.buttonText}>+ Tambah Anak</Text>
         </TouchableOpacity>
       </View>
 
-      {/* List berbentuk card */}
       <FlatList
         data={dataAnak}
         renderItem={renderCard}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id_balita.toString()}
         contentContainerStyle={{ paddingBottom: 20 }}
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#f5f5f5',
-  },
-  header: {
-    alignItems: 'flex-end',
-    marginBottom: 16,
-  },
-  button: {
-    backgroundColor: '#007BFF',
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 8,
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  card: {
-    flexDirection: 'row', // baris
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    padding: 16,
-    marginBottom: 12,
-    borderRadius: 10,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
-  },
-  nomorWrapper: {
-    width: 40, // supaya nomor punya area tetap
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  nomor: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#007BFF',
-  },
-  infoWrapper: {
-    flex: 1, // isi penuh di kanan
-  },
-  nama: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  umur: {
-    fontSize: 14,
-    color: '#555',
-  },
-});
