@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from './styles/ProfileScreenStyles';
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ onLogout }: any) {
   const navigation = useNavigation();
   const [user, setUser] = useState<any>(null);
 
@@ -21,9 +21,7 @@ export default function ProfileScreen() {
   }, []);
 
   const handleLogout = async () => {
-    await AsyncStorage.removeItem('userToken');
-    await AsyncStorage.removeItem('userData');
-    (navigation as any).replace('Login'); // ✅ aman untuk Stack Navigator
+    onLogout(); // ✅ panggil ke App untuk setIsLoggedIn(false)
   };
 
   return (

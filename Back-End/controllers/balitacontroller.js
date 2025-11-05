@@ -1,11 +1,12 @@
 const { Balita, Orangtua, PengukuranGizi } = require("../models");
 
 exports.addBalita = async (req, res) => {
+  console.log("JWT User Payload:", req.user);
+  console.log("Request Body:", req.body);
   try {
     const { nama_balita, tgl_lahir, jenis_kelamin } = req.body;
 
     const id_orangtua = req.user?.id_user; // atau req.user.id_orangtua, sesuaikan dengan payload JWT-mu
-
     if (!id_orangtua) {
       return res
         .status(403)
@@ -29,7 +30,9 @@ exports.addBalita = async (req, res) => {
     res.status(201).json({ message: "Balita berhasil ditambahkan ✅", balita });
   } catch (err) {
     console.error("Error addBalita:", err);
-    res.status(500).json({ message: "Gagal menambahkan balita" });
+    res
+      .status(500)
+      .json({ message: "Gagal menambahkan balita", error: err.message });
   }
 };
 

@@ -11,6 +11,7 @@ export const registerUser = async (userData: {
 }) => {
   return request('/auth/register', {
     method: 'POST',
+
     body: JSON.stringify(userData),
   });
 };
