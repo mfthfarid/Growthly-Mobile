@@ -1,8 +1,12 @@
 import * as React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // 🔹 Import semua screen
 import ForgotPasswordScreen from './src/screens/Auth/ForgotPasswordScreen';
@@ -22,7 +26,9 @@ import MakananScreen from './src/screens/MakananScreen';
 import DetailMakananScreen from './src/screens/DetailMakananScreen';
 import PrediksiScreen from './src/screens/PrediksiScreen';
 import PengukuranScreen from './src/screens/PengukuranScreen';
+import NotifikasiScreen from './src/screens/NotifikasiScreen';
 
+// const navigation = useNavigation<any>();
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -38,7 +44,19 @@ function HomeStack() {
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ title: 'Beranda' }}
+        options={({ navigation }) => ({
+          title: 'Beranda',
+          headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Notifikasi')}>
+              <Ionicons name="notifications" size={24} color="white" />
+            </TouchableOpacity>
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="Notifikasi"
+        component={NotifikasiScreen}
+        options={{ title: 'Notifikasi' }}
       />
       <Stack.Screen
         name="Artikel"
@@ -102,7 +120,7 @@ function MenuAnakStack() {
   );
 }
 
-function ProfileStack() {
+function ProfileStack({ onLogout }: any) {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -111,11 +129,16 @@ function ProfileStack() {
         headerTintColor: '#fff',
       }}
     >
-      <Stack.Screen
+      <Stack.Screen name="ProfileScreen" options={{ title: 'Profil' }}>
+        {(props: any) => <ProfileScreen {...props} onLogout={onLogout} />}
+      </Stack.Screen>
+      {/* <Stack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
         options={{ title: 'Profil' }}
-      />
+      >
+        {props => <ProfileScreen {...props} onLogout={onLogout} />}
+      </Stack.Screen> */}
       <Stack.Screen
         name="EditProfile"
         component={EditProfileScreen}
@@ -125,7 +148,7 @@ function ProfileStack() {
   );
 }
 
-function AppTabs() {
+function AppTabs({ onLogout }: any) {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -155,9 +178,11 @@ function AppTabs() {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileStack}
+        // component={ProfileStack}
         options={{ headerShown: false }}
-      />
+      >
+        {props => <ProfileStack {...props} onLogout={onLogout} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
@@ -165,10 +190,16 @@ function AppTabs() {
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
+  const onLogout = async () => {
+    await AsyncStorage.removeItem('userToken');
+    await AsyncStorage.removeItem('userData');
+    setIsLoggedIn(false); // kembali ke login
+  };
+
   return (
     <NavigationContainer>
       {isLoggedIn ? (
-        <AppTabs />
+        <AppTabs onLogout={onLogout} />
       ) : (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login">
