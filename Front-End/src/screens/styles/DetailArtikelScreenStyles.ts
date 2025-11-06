@@ -12,6 +12,13 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 16,
   },
+  imagePlaceholder: {
+    width: '100%',
+    height: 200,
+    backgroundColor: '#ccc',
+    borderRadius: 12,
+    marginBottom: 16,
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
