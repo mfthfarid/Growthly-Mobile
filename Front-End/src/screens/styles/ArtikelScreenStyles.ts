@@ -11,6 +11,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginBottom: 15,
   },
+  emptyMessage: {
+    fontSize: 15,
+    color: '#555',
+    textAlign: 'center',
+  },
   card: {
     flexDirection: 'row',
     backgroundColor: '#fff',
@@ -28,6 +33,13 @@ const styles = StyleSheet.create({
     height: 100,
     borderTopLeftRadius: 12,
     borderBottomLeftRadius: 12,
+  },
+  imagePlaceholder: {
+    width: 100,
+    height: 100,
+    borderTopLeftRadius: 12,
+    borderBottomLeftRadius: 12,
+    backgroundColor: '#ccc',
   },
   cardContent: {
     flex: 1,
