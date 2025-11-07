@@ -98,6 +98,7 @@ exports.login = async (req, res) => {
         {
           model: Orangtua,
           attributes: [
+            "id_orangtua",
             "nama_orangtua",
             "no_hp",
             "alamat",

@@ -11,6 +11,7 @@ import { loginUser } from '../../service/userService';
 type UserData = {
   id_user: number;
   username: string;
+  id_orangtua: number;
   nama_orangtua: string;
   no_hp: string;
   alamat: string;

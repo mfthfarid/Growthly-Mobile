@@ -14,10 +14,12 @@ const {
 
 // Gunakan verifyToken di SEMUA route yang butuh autentikasi
 router.get("/stats", verifyToken, getBalitaStats);
-router.post("/", verifyToken, addBalita);
+router.get("/mybalita", verifyToken, getBalitaByOrangtua);
+
+router.post("/add", verifyToken, addBalita);
+
 router.get("/", verifyToken, getBalita);
 router.put("/:id_balita", verifyToken, updateBalita);
 router.delete("/:id_balita", verifyToken, deleteBalita);
-router.get("/mybalita", verifyToken, getBalitaByOrangtua);
 
 module.exports = router;

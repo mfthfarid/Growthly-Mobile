@@ -17,6 +17,7 @@ import { getMyBalita } from '../service/balitaService';
 
 interface Balita {
   id_balita: number;
+  id_orangtua: number;
   nama_balita: string;
   tgl_lahir: string;
   jenis_kelamin: 'L' | 'P';
@@ -43,7 +44,6 @@ export default function AnakScreen() {
     fetchDataAnak();
   }, []);
 
-  // ✅ Update daftar jika ada anak baru dari TambahAnakScreen
   useFocusEffect(
     useCallback(() => {
       if (route.params?.newBalita) {
@@ -61,7 +61,6 @@ export default function AnakScreen() {
       <View style={styles.nomorWrapper}>
         <Text style={styles.nomor}>{index + 1}</Text>
       </View>
-
       <View style={styles.infoWrapper}>
         <Text style={styles.nama}>{item.nama_balita}</Text>
         <Text style={styles.umur}>Tanggal Lahir: {item.tgl_lahir}</Text>
