@@ -6,15 +6,19 @@ interface BalitaData {
   jenis_kelamin: 'L' | 'P';
 }
 
-export const addBalita = async (data: BalitaData) => {
-  return await request('/balita', {
-    method: 'POST',
-    body: JSON.stringify(data),
-  });
+export const getMyBalita = async () => {
+  try {
+    const response = await request('/balita/mybalita', { method: 'GET' });
+    return response;
+  } catch (error: any) {
+    console.log('❌ Error API getMyBalita:', error);
+    throw error;
+  }
 };
 
-export const getMyBalita = async () => {
-  return await request('/balita/mybalita', {
-    method: 'GET',
+export const addBalita = async (data: any) => {
+  return await request('/balita/add', {
+    method: 'POST',
+    body: JSON.stringify(data),
   });
 };

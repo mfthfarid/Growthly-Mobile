@@ -16,12 +16,14 @@ import { addBalita } from '../service/balitaService';
 
 interface UserData {
   id_user: number;
+  id_orangtua: number;
   nama_orangtua: string;
   username: string;
 }
 
 export default function TambahAnakScreen() {
   const [user, setUser] = useState<UserData | null>(null);
+  const [orangtua, setOrangtua] = useState<UserData | null>(null);
   const [namaAnak, setNamaAnak] = useState('');
   const [tanggalLahir, setTanggalLahir] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -83,6 +85,7 @@ export default function TambahAnakScreen() {
         nama_balita: namaAnak,
         tgl_lahir: formatDate(tanggalLahir),
         jenis_kelamin: jenisKelamin,
+        id_orangtua: user?.id_orangtua,
       };
 
       // Kirim ke API
