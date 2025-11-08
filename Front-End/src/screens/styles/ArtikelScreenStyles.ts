@@ -41,6 +41,15 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 12,
     borderBottomLeftRadius: 12,
     backgroundColor: '#ccc',
+    justifyContent: 'center',
+  },
+  noImageText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    // marginTop: 35,
+    fontWeight: '600',
+    fontStyle: 'italic',
   },
   cardContent: {
     flex: 1,

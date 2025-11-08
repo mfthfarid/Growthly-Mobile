@@ -25,7 +25,9 @@ export default function DetailArtikelScreen({
       {imageUrl ? (
         <Image source={{ uri: imageUrl }} style={styles.image} />
       ) : (
-        <View style={styles.imagePlaceholder} />
+        <View style={styles.imagePlaceholder}>
+          <Text style={styles.noImageText}>No Image</Text>
+        </View>
       )}
       <Text style={styles.title}>{article.judul}</Text>
       <Text style={styles.content}>{article.isi}</Text>

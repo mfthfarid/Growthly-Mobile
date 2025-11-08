@@ -20,17 +20,17 @@ export default function ArtikelScreen() {
   const [loading, setLoading] = useState(true);
 
   const fetchArticles = async () => {
-    console.log('🔄 fetchArticles dipanggil...');
+    // console.log('🔄 fetchArticles dipanggil...');
     try {
       setLoading(true);
       const response = await getArtikel();
-      console.log('Response dari service (sudah JSON):', response);
+      // console.log('Response dari service (sudah JSON):', response);
 
       if (Array.isArray(response)) {
-        console.log('✅ Menyimpan data ke state:', response);
+        // console.log('✅ Menyimpan data ke state:', response);
         setArtikel(response);
       } else {
-        console.warn('❌ Response bukan array:', response);
+        // console.warn('❌ Response bukan array:', response);
         setArtikel([]);
       }
     } catch (error: any) {
@@ -46,13 +46,13 @@ export default function ArtikelScreen() {
   }, []);
 
   const renderItem = ({ item }: { item: Artikel }) => {
-    console.log('Item foto:', item.foto); // <-- Tetap bisa log, tapi lebih rapi
+    // console.log('Item foto:', item.foto); // <-- Tetap bisa log, tapi lebih rapi
 
     // Bangun URL gambar jika ada foto
     const imageUrl = item.foto
       ? `${IMAGE_BASE_URL}/${item.foto}` // Gabung base URL + nama file
       : null;
-    console.log('Full image URL:', imageUrl);
+    // console.log('Full image URL:', imageUrl);
 
     return (
       <TouchableOpacity
@@ -62,7 +62,9 @@ export default function ArtikelScreen() {
         {imageUrl ? (
           <Image source={{ uri: imageUrl }} style={styles.image} />
         ) : (
-          <View style={styles.imagePlaceholder} />
+          <View style={styles.imagePlaceholder}>
+            <Text style={styles.noImageText}>No Image</Text>
+          </View>
         )}
         <View style={styles.cardContent}>
           <Text style={styles.title}>{item.judul}</Text>

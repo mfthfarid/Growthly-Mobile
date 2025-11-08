@@ -51,6 +51,55 @@ const styles = StyleSheet.create({
   articleContent: { flex: 1, padding: 10, justifyContent: 'center' },
   articleTitle: { fontSize: 16, fontWeight: 'bold' },
   articleExcerpt: { fontSize: 13, color: '#666' },
+  card: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    marginBottom: 15,
+    overflow: 'hidden',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    resizeMode: 'cover',
+    borderTopLeftRadius: 12,
+    borderBottomLeftRadius: 12,
+  },
+  imagePlaceholder: {
+    width: 100,
+    height: 100,
+    borderTopLeftRadius: 12,
+    borderBottomLeftRadius: 12,
+    backgroundColor: '#ccc',
+    justifyContent: 'center',
+  },
+  noImageText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    // marginTop: 35,
+    fontWeight: '600',
+    fontStyle: 'italic',
+  },
+  cardContent: {
+    flex: 1,
+    padding: 10,
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+  excerpt: {
+    fontSize: 13,
+    color: '#666',
+  },
 
   // Makanan grid
   foodGrid: {
