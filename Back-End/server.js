@@ -48,6 +48,8 @@ app.use("/api/orangtua", orangtuaRoutes);
 app.use("/api/pengukuran", pengukuranGiziRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/predict", prediksiRoutes); // Tambahkan ini
+// Tambahkan ini agar folder uploads bisa diakses dari luar
+app.use("/images", express.static(path.join(__dirname, "uploads/artikel")));
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
