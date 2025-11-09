@@ -70,7 +70,15 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 12,
     borderBottomLeftRadius: 12,
   },
-  imagePlaceholder: {
+  imagePlaceholderMakanan: {
+    // width: 100,
+    height: 100,
+    borderTopLeftRadius: 12,
+    borderBottomLeftRadius: 12,
+    backgroundColor: '#ccc',
+    justifyContent: 'center',
+  },
+  imagePlaceholderArtikel: {
     width: 100,
     height: 100,
     borderTopLeftRadius: 12,

@@ -12,6 +12,22 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 20,
   },
+  imagePlaceholder: {
+    width: 100,
+    height: 100,
+    borderTopLeftRadius: 12,
+    borderBottomLeftRadius: 12,
+    backgroundColor: '#ccc',
+    justifyContent: 'center',
+  },
+  noImageText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    // marginTop: 35,
+    fontWeight: '600',
+    fontStyle: 'italic',
+  },
   title: {
     fontSize: 22,
     fontWeight: 'bold',

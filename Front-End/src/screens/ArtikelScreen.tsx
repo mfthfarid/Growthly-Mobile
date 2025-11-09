@@ -11,7 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { getArtikel } from '../service/artikelService';
 import { Artikel } from '../types/types';
-import { IMAGE_BASE_URL } from '../service/apiService'; // Pastikan ini benar
+import { IMAGE_BASE_URL } from '../service/apiService';
 import styles from './styles/ArtikelScreenStyles';
 
 export default function ArtikelScreen() {
@@ -50,7 +50,7 @@ export default function ArtikelScreen() {
 
     // Bangun URL gambar jika ada foto
     const imageUrl = item.foto
-      ? `${IMAGE_BASE_URL}/${item.foto}` // Gabung base URL + nama file
+      ? `${IMAGE_BASE_URL}/artikel/${item.foto}` // Gabung base URL + nama file
       : null;
     // console.log('Full image URL:', imageUrl);
 
