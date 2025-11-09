@@ -1,15 +1,34 @@
 import React from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 import { styles } from './styles/DetailMakananScreenStyles';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types/types';
+import { IMAGE_BASE_URL } from '../service/apiService';
 
-export default function DetailMakananScreen({ route }: any) {
-  const { makanan } = route.params;
+type DetailMakananScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  'DetailMakanan'
+>;
+
+export default function DetailMakananScreen({
+  route,
+}: DetailMakananScreenProps) {
+  const { food } = route.params;
+  const imageUrl = food.foto
+    ? `${IMAGE_BASE_URL}/makanan/${food.foto}` // Gabung base URL + nama file
+    : null;
 
   return (
     <ScrollView style={styles.container}>
-      <Image source={{ uri: makanan.image }} style={styles.image} />
-      <Text style={styles.title}>{makanan.title}</Text>
-      <Text style={styles.content}>{makanan.content}</Text>
+      {imageUrl ? (
+        <Image source={{ uri: imageUrl }} style={styles.image} />
+      ) : (
+        <View style={styles.imagePlaceholder}>
+          <Text style={styles.noImageText}>No Image</Text>
+        </View>
+      )}
+      <Text style={styles.title}>{food.nama_makanan}</Text>
+      <Text style={styles.content}>{food.isi}</Text>
 
       <Text style={styles.subtitle}>🍽️ Kandungan Gizi:</Text>
       <Text style={styles.text}>• Karbohidrat: 40g</Text>

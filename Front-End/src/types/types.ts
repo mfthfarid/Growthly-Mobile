@@ -10,11 +10,9 @@ export interface Artikel {
 // Type untuk Makanan
 export interface Makanan {
   id_makanan: number;
-  nama: string;
-  deskripsi: string;
-  kalori: number;
+  nama_makanan: string;
+  isi: string;
   foto: string;
-  // tambahkan field lain jika ada
 }
 
 // Type untuk Anak

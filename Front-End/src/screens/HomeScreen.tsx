@@ -169,31 +169,15 @@ import {
   Modal,
   StyleSheet,
 } from 'react-native';
+import { IMAGE_BASE_URL } from '../service/apiService';
+import { Artikel, Makanan } from '../types/types';
+import { getArtikel } from '../service/artikelService'; // Import fungsi API
+import { getMakanan } from '../service/makananService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './styles/HomeScreenStyles';
 
-const dummyArticles = [
-  {
-    id: '1',
-    title: 'Tips Sehat di Musim Hujan',
-    content: 'Artikel tentang tips sehat...',
-    image: 'https://picsum.photos/400/200?random=1',
-  },
-  {
-    id: '2',
-    title: 'Belajar React Native Lebih Cepat',
-    content: 'Pelajari React Native lebih dalam...',
-    image: 'https://picsum.photos/400/200?random=2',
-  },
-  {
-    id: '3',
-    title: 'Produktivitas Kerja dari Rumah',
-    content: 'Work from home bisa produktif...',
-    image: 'https://picsum.photos/400/200?random=3',
-  },
-];
-
 const dummyMakanan = [
+  // ... seperti sebelumnya
   {
     id: '1',
     title: 'Nasi Goreng Sehat',
@@ -224,7 +208,48 @@ export default function HomeScreen() {
   const navigation = useNavigation<any>();
   const [showModal, setShowModal] = useState(false);
   const [monthName, setMonthName] = useState('');
+  const [userName, setUserName] = useState(''); // Tambah state untuk nama user
+  const [bannerImage, setBannerImage] = useState(''); // Tambah state untuk banner
+  const [articles, setArticles] = useState<Artikel[]>([]); // Tambah state untuk artikel
+  const [makanan, setMakanan] = useState<Makanan[]>([]); // Tambah state untuk artikel
+  const [loading, setLoading] = useState(true); // Tambah loading state
 
+  // Memanggil nama user
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const userData = await AsyncStorage.getItem('userData');
+        if (userData) {
+          const parsed = JSON.parse(userData);
+          setUserName(parsed.nama_orangtua || parsed.username || 'Bapak/Ibu'); // Gunakan nama, jika tidak ada tampilkan 'User'
+          // Jika kamu simpan URL foto user di sini, gunakan itu
+          // setUserImage(parsed.foto || ''); // Misalnya kamu simpan foto user
+        }
+      } catch (error) {
+        console.error('Gagal ambil data user:', error);
+      }
+    };
+
+    loadUserData();
+  }, []);
+
+  // Memanggil banner random
+  useEffect(() => {
+    // Ambil tanggal hari ini
+    const today = new Date();
+    const dayOfYear = Math.floor(
+      (today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) /
+        (1000 * 60 * 60 * 24),
+    );
+
+    // Gunakan seed berdasarkan tanggal agar gambar tetap sama sehari penuh
+    const randomImage = `https://picsum.photos/800/300?random=${dayOfYear}`;
+
+    // Simpan ke state
+    setBannerImage(randomImage);
+  }, []);
+
+  // cek notifikasi
   useEffect(() => {
     const checkNotification = async () => {
       const today = new Date();
@@ -247,7 +272,6 @@ export default function HomeScreen() {
 
       const lastNotified = await AsyncStorage.getItem('lastNotifiedMonth');
 
-      // 🧪 Versi Testing: selalu tampilkan modal hari ini
       if (lastNotified !== month.toString()) {
         setShowModal(true);
         await AsyncStorage.setItem('lastNotifiedMonth', month.toString());
@@ -257,42 +281,121 @@ export default function HomeScreen() {
     checkNotification();
   }, []);
 
-  const renderArticle = ({ item }: any) => (
-    <TouchableOpacity
-      style={styles.articleCard}
-      onPress={() => navigation.navigate('DetailArtikel', { article: item })}
-    >
-      <Image source={{ uri: item.image }} style={styles.articleImage} />
-      <View style={styles.articleContent}>
-        <Text style={styles.articleTitle}>{item.title}</Text>
-        <Text numberOfLines={2} style={styles.articleExcerpt}>
-          {item.content}
-        </Text>
-      </View>
-    </TouchableOpacity>
-  );
+  // Ambil artikel dari API
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await getArtikel();
+        if (Array.isArray(response)) {
+          // Urutkan berdasarkan created_at dari yang terbaru ke terlama
+          const sorted = response.sort((a, b) => {
+            return (
+              new Date(b.created_at).getTime() -
+              new Date(a.created_at).getTime()
+            );
+          });
+          // Ambil 3 artikel terbaru
+          setArticles(sorted.slice(0, 3));
+        }
+      } catch (error) {
+        console.error('Gagal mengambil artikel:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const renderMakanan = ({ item }: any) => (
-    <TouchableOpacity
-      style={styles.foodCard}
-      onPress={() => navigation.navigate('DetailMakanan', { makanan: item })}
-    >
-      <Image source={{ uri: item.image }} style={styles.foodImage} />
-      <View style={styles.overlay}>
-        <Text style={styles.foodTitle}>{item.title}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+    fetchArticles();
+  }, []);
 
-  const limitedArticles = dummyArticles.slice(0, 3);
-  const limitedMakanan = dummyMakanan.slice(0, 4);
+  // Ambil makanan dari API
+  useEffect(() => {
+    const fetchMakanan = async () => {
+      try {
+        const response = await getMakanan();
+        if (Array.isArray(response)) {
+          // Ambil 4 makanan terbaru (jika kamu ingin urutkan, lakukan di sini)
+          setMakanan(response.slice(0, 4));
+        }
+      } catch (error) {
+        console.error('Gagal mengambil makanan:', error);
+      }
+    };
+
+    fetchMakanan();
+  }, []);
+
+  // Render item untuk artikel
+  const renderArticle = ({ item }: { item: Artikel }) => {
+    const imageUrl = item.foto
+      ? `${IMAGE_BASE_URL}/artikel/${item.foto}`
+      : null;
+
+    return (
+      <TouchableOpacity
+        style={styles.card}
+        onPress={() => navigation.navigate('DetailArtikel', { article: item })}
+      >
+        {imageUrl ? (
+          <Image source={{ uri: imageUrl }} style={styles.image} />
+        ) : (
+          <View style={styles.imagePlaceholderArtikel}>
+            <Text style={styles.noImageText}>No Image</Text>
+          </View>
+        )}
+        <View style={styles.cardContent}>
+          <Text style={styles.title}>{item.judul}</Text>
+          <Text numberOfLines={2} style={styles.excerpt}>
+            {item.isi}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const renderMakanan = ({ item }: { item: Makanan }) => {
+    const imageUrl = item.foto
+      ? `${IMAGE_BASE_URL}/makanan/${item.foto}`
+      : null;
+    console.log('Makanan foto:', item.foto);
+
+    return (
+      <TouchableOpacity
+        style={styles.foodCard}
+        onPress={() => navigation.navigate('DetailMakanan', { makanan: item })}
+      >
+        {imageUrl ? (
+          <Image source={{ uri: imageUrl }} style={styles.foodImage} />
+        ) : (
+          <View style={styles.imagePlaceholderMakanan}>
+            <Text style={styles.noImageText}>No Image</Text>
+          </View>
+        )}
+        <View style={styles.overlay}>
+          <Text style={styles.foodTitle}>{item.nama_makanan}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  if (loading) {
+    return (
+      <View
+        style={[
+          styles.container,
+          { justifyContent: 'center', alignItems: 'center' },
+        ]}
+      >
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.greeting}>👋 Selamat Datang, John!</Text>
+      <Text style={styles.greeting}>👋 Selamat Datang, {userName}!</Text>
 
       <Image
-        source={{ uri: 'https://picsum.photos/800/300' }}
+        source={{ uri: bannerImage }}
         style={styles.banner}
         resizeMode="cover"
       />
@@ -352,8 +455,8 @@ export default function HomeScreen() {
       </View>
 
       <View style={styles.foodGrid}>
-        {limitedMakanan.map(item => (
-          <View key={item.id} style={styles.foodWrapper}>
+        {makanan.map(item => (
+          <View key={item.id_makanan} style={styles.foodWrapper}>
             {renderMakanan({ item })}
           </View>
         ))}
@@ -368,9 +471,11 @@ export default function HomeScreen() {
       </View>
 
       <FlatList
-        data={limitedArticles}
-        keyExtractor={item => item.id}
-        renderItem={renderArticle}
+        data={articles} // Gunakan state articles
+        keyExtractor={item =>
+          item.id_artikel?.toString() || Math.random().toString()
+        }
+        renderItem={renderArticle} // Gunakan fungsi renderArticle
         scrollEnabled={false}
         contentContainerStyle={{ marginBottom: 20 }}
       />

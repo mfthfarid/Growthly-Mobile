@@ -43,7 +43,7 @@ const LoginScreen = ({ onLogin }: any) => {
 
     try {
       const result = await loginUser({ username, password });
-
+      console.log('Login Response:', result);
       if (result.token) {
         // ✅ Simpan token dan user data
         await AsyncStorage.setItem('userToken', result.token);

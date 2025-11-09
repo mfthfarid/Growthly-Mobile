@@ -16,9 +16,17 @@ export const styles = StyleSheet.create({
   imagePlaceholder: {
     width: '100%',
     height: 200,
+    justifyContent: 'center',
     backgroundColor: '#ccc',
     borderRadius: 12,
     marginBottom: 16,
+  },
+  noImageText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    fontWeight: '600',
+    fontStyle: 'italic',
   },
   title: {
     fontSize: 20,
