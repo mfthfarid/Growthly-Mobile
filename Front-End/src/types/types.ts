@@ -24,6 +24,14 @@ export interface Anak {
   // tambahkan field lain jika ada
 }
 
+export interface Balita {
+  id_balita: number;
+  nama_balita: string;
+  tgl_lahir: Date;
+  jenis_kelamin: 'L' | 'P';
+  id_orangtua: number;
+}
+
 // Gabungkan semua route yang digunakan di semua Stack.Navigator di sini
 export type RootStackParamList = {
   // Auth Stack
