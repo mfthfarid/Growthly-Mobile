@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,21 +9,40 @@ import {
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Picker } from '@react-native-picker/picker';
 import { styles } from './styles/PengukuranScreenStyles';
+import { getMyBalita } from '../service/balitaService'; // Import service
+import { Balita } from '../types/types'; // Sesuaikan dengan tipe kamu
 
 export default function PengukuranScreen() {
   const [selectedAnak, setSelectedAnak] = useState('');
+  const [dataAnak, setDataAnak] = useState<Balita[]>([]); // State untuk data anak
+  const [loading, setLoading] = useState(true); // Tambah loading state
   const [tanggalUkur, setTanggalUkur] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [tinggiBadan, setTinggiBadan] = useState('');
   const [beratBadan, setBeratBadan] = useState('');
   const [namaPosyandu, setNamaPosyandu] = useState('');
 
-  // Contoh data anak (bisa nanti diganti dengan API)
-  const dataAnak = [
-    { id: 1, nama: 'Aisyah' },
-    { id: 2, nama: 'Budi' },
-    { id: 3, nama: 'Citra' },
-  ];
+  // Ambil data anak dari backend
+  useEffect(() => {
+    const fetchBalita = async () => {
+      try {
+        const response = await getMyBalita();
+        if (Array.isArray(response)) {
+          setDataAnak(response);
+        } else {
+          console.warn('Response bukan array:', response);
+          setDataAnak([]);
+        }
+      } catch (error) {
+        console.error('Gagal mengambil data anak:', error);
+        setDataAnak([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBalita();
+  }, []);
 
   const formatDate = (date: Date): string => {
     const year = date.getFullYear();
@@ -40,7 +59,7 @@ export default function PengukuranScreen() {
       berat_badan: beratBadan,
       nama_posyandu: namaPosyandu,
     });
-    // nanti bisa panggil API di sini
+    // Nanti bisa panggil API addPengukuran di sini
   };
 
   const handleDateChange = (event: any, selectedDate?: Date) => {
@@ -49,6 +68,15 @@ export default function PengukuranScreen() {
       setTanggalUkur(selectedDate);
     }
   };
+
+  // Tampilkan loading jika data belum siap
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -64,12 +92,16 @@ export default function PengukuranScreen() {
         >
           <Picker.Item label="Pilih Nama Anak" value="" />
           {dataAnak.map(anak => (
-            <Picker.Item key={anak.id} label={anak.nama} value={anak.nama} />
+            <Picker.Item
+              key={anak.id_balita} // Gunakan id_balita sebagai key
+              label={anak.nama_balita} // Gunakan nama_balita sebagai label
+              value={anak.nama_balita} // Gunakan nama_balita sebagai value
+            />
           ))}
         </Picker>
       </View>
 
-      {/* Tanggal Ukur */}
+      {/* ... Tanggal Ukur, Tinggi, Berat, Posyandu ... */}
       <Text style={styles.label}>Tanggal Ukur</Text>
       <TouchableOpacity
         style={styles.dateInput}
@@ -88,7 +120,6 @@ export default function PengukuranScreen() {
         />
       )}
 
-      {/* Tinggi Badan */}
       <Text style={styles.label}>Tinggi Badan (cm)</Text>
       <TextInput
         style={styles.input}
@@ -98,7 +129,6 @@ export default function PengukuranScreen() {
         onChangeText={setTinggiBadan}
       />
 
-      {/* Berat Badan */}
       <Text style={styles.label}>Berat Badan (kg)</Text>
       <TextInput
         style={styles.input}
@@ -108,7 +138,6 @@ export default function PengukuranScreen() {
         onChangeText={setBeratBadan}
       />
 
-      {/* Nama Posyandu */}
       <Text style={styles.label}>Nama Posyandu</Text>
       <TextInput
         style={styles.input}
@@ -117,7 +146,6 @@ export default function PengukuranScreen() {
         onChangeText={setNamaPosyandu}
       />
 
-      {/* Tombol Simpan */}
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Simpan Data</Text>
       </TouchableOpacity>
