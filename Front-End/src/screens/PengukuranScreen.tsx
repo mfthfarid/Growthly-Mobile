@@ -27,10 +27,18 @@ export default function PengukuranScreen() {
     const fetchBalita = async () => {
       try {
         const response = await getMyBalita();
-        if (Array.isArray(response)) {
-          setDataAnak(response);
+        console.log('Response lengkap:', response); // <-- Tambahkan log ini untuk debug
+
+        // Ganti dari:
+        // if (Array.isArray(response)) {
+        //   setDataAnak(response);
+        // }
+
+        // Jadi:
+        if (response && Array.isArray(response.balitas)) {
+          setDataAnak(response.balitas); // Ambil array dari response.balitas
         } else {
-          console.warn('Response bukan array:', response);
+          console.warn('Response.balitas bukan array:', response.balitas);
           setDataAnak([]);
         }
       } catch (error) {

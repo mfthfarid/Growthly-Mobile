@@ -6,6 +6,14 @@ export const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
     padding: 20,
   },
+  input: {
+    backgroundColor: '#fff',
+    padding: 12,
+    borderRadius: 8,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
