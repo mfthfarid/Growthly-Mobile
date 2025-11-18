@@ -1,4 +1,4 @@
-const ML_API_BASE_URL = 'http://10.10.182.1:5001'; // Android emulator
+const ML_API_BASE_URL = 'http://192.168.1.9:5001'; // Android emulator
 
 export interface PredictionResponse {
   prediction: number;
