@@ -13,6 +13,7 @@ type DetailMakananScreenProps = NativeStackScreenProps<
 export default function DetailMakananScreen({
   route,
 }: DetailMakananScreenProps) {
+  console.log(route.params);
   const { food } = route.params;
   const imageUrl = food.foto
     ? `${IMAGE_BASE_URL}/makanan/${food.foto}` // Gabung base URL + nama file

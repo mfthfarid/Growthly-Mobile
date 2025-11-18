@@ -27,7 +27,7 @@ export interface Anak {
 export interface Balita {
   id_balita: number;
   nama_balita: string;
-  tgl_lahir: Date;
+  tgl_lahir: string;
   jenis_kelamin: 'L' | 'P';
   id_orangtua: number;
 }
