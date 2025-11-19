@@ -48,6 +48,27 @@ exports.getPengukuran = async (req, res) => {
   }
 };
 
+//Ambil pengukuran berdasarkan ID
+exports.getPengukuranByBalita = async (req, res) => {
+  try {
+    const { id_balita } = req.params; // Ambil id_balita dari URL params
+    console.log("Mengambil pengukuran untuk id_balita:", id_balita); // 🔍 Log
+
+    const pengukuran = await PengukuranGizi.findAll({
+      where: { id_balita }, // Filter berdasarkan id_balita
+      include: { model: Balita, attributes: ["id_balita", "nama_balita"] }, // Jika kamu ingin data balita juga
+      order: [["tanggal_ukur", "DESC"]], // Urutkan dari terbaru
+    });
+
+    console.log("Hasil pengukuran:", pengukuran); // 🔍 Log
+
+    res.json(pengukuran);
+  } catch (err) {
+    console.error("Error di getPengukuranByBalita:", err); // 🔍 Log error
+    res.status(500).json({ message: "Gagal mengambil data pengukuran" });
+  }
+};
+
 // Update pengukuran
 exports.updatePengukuran = async (req, res) => {
   try {

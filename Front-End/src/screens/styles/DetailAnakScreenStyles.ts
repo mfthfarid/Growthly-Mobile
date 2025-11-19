@@ -59,10 +59,42 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 16,
   },
+  pengukuranItem: {
+    backgroundColor: '#fff',
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 16,
+    elevation: 2,
+  },
+  pengukuranTanggal: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 4,
+  },
+  noDataText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    marginTop: 20,
+  },
   grafikCard: {
     backgroundColor: '#fff',
     padding: 16,
     borderRadius: 12,
     elevation: 2,
+  },
+  statusGiziContainer: {
+    padding: 15,
+    margin: 15,
+    backgroundColor: '#f0f8ff', // Light blue background
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#d0e0ff',
+  },
+  statusGiziText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+    textAlign: 'center',
   },
 });

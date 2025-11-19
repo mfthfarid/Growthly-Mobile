@@ -85,7 +85,7 @@ const LoginScreen = ({ onLogin }: any) => {
         extraHeight={Platform.OS === 'ios' ? 60 : 20}
         enableOnAndroid={true}
         keyboardOpeningTime={0} // Agar scroll langsung mengikuti keyboard
-        extraScrollHeight={30} // Tambahan scroll sedikit lebih tinggi dari input
+        extraScrollHeight={0} // Tambahan scroll sedikit lebih tinggi dari input
         scrollIndicatorInsets={{ right: 1, left: 1 }} // Jika kamu ingin menghindari scroll indicator geser
       >
         <View style={styles.container}>
