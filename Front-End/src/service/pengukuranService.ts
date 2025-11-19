@@ -1,62 +1,38 @@
-// src/service/pengukuranService.ts
 import { request } from './apiService';
-
-type AddPengukuranRequest = {
-  id_balita: string;
-  tanggal_ukur: string;
-  tinggi_badan: number;
-  berat_badan: number;
-  status_gizi: string;
-  catatan?: string;
-  nama_posyandu: string;
-};
-
-type AddPengukuranResponse = {
-  message: string;
-  pengukuran: {
-    id_pengukuran: string;
-    id_balita: string;
-    tanggal_ukur: string;
-    tinggi_badan: number;
-    berat_badan: number;
-    status_gizi: string;
-    catatan: string | null;
-    nama_posyandu: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-};
+import {
+  AddPengukuranRequest,
+  AddPengukuranResponse,
+  GetPengukuranResponse,
+} from '../types/types'; // atau dari file types kamu
 
 export const addPengukuran = async (
-  addPengukuranRequest: AddPengukuranRequest,
+  data: AddPengukuranRequest,
 ): Promise<AddPengukuranResponse> => {
-  console.log('Mengirim ke API:', addPengukuranRequest);
+  console.log('Mengirim ke API:', data);
   try {
     const response = await request('/pengukuran', {
       method: 'POST',
-      body: JSON.stringify(addPengukuranRequest),
+      body: JSON.stringify(data),
     });
     console.log('Response API:', response);
     return response;
   } catch (error: any) {
-    console.error('Error di service:', error); // Tambahkan log
-    // Error sudah ditangani oleh `request`, Tinggal dilempar
+    console.error('Error di service:', error);
     throw error;
   }
 };
 
-// export const addPengukuran = async (
-//    AddPengukuranRequest
-// ): Promise<AddPengukuranResponse> => {
-//   try {
-//     const response = await request('/pengukuran', {
-//       method: 'POST',
-//       body: JSON.stringify(data),
-//     });
+export const getPengukuranByBalita = async (
+  id_balita: number,
+): Promise<GetPengukuranResponse> => {
+  try {
+    const response = await request(`/pengukuran/balita/${id_balita}`, {
+      method: 'GET',
+    });
 
-//     return response;
-//   } catch (error: any) {
-//     // Error sudah ditangani oleh `request`, tinggal dilempar
-//     throw error;
-//   }
-// };
+    return response;
+  } catch (error: any) {
+    console.error('Gagal mengambil pengukuran:', error);
+    throw error;
+  }
+};

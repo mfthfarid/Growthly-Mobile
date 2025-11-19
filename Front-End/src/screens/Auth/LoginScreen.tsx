@@ -1,11 +1,20 @@
 // src/screens/Auth/LoginScreen.tsx
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, Modal } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Modal,
+  Platform,
+  KeyboardAvoidingView,
+} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useNavigation } from '@react-navigation/native';
+import { loginUser } from '../../service/userService';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomInput from '../../components/CustomInput';
 import styles from '../styles/LoginStyles'; //
-import { loginUser } from '../../service/userService';
 
 // Tambahkan tipe untuk UserData agar lebih aman
 type UserData = {
@@ -66,103 +75,120 @@ const LoginScreen = ({ onLogin }: any) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../../assets/images/logo1.png')}
-        style={styles.logo}
-      />
-
-      <Text style={styles.title}>Selamat Datang</Text>
-
-      <CustomInput
-        style={styles.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
-      />
-
-      <View style={styles.passwordContainer}>
-        <CustomInput
-          style={styles.passwordInput}
-          placeholder="Password"
-          secureTextEntry={!showPassword}
-          value={password}
-          onChangeText={setPassword}
-        />
-        <TouchableOpacity
-          onPress={() => setShowPassword(!showPassword)}
-          style={styles.toggleBtn}
-        >
-          <Text>{showPassword ? '🙈' : '👁️'}</Text>
-        </TouchableOpacity>
-      </View>
-
-      <TouchableOpacity
-        style={{ alignSelf: 'flex-end', marginBottom: 20 }}
-        onPress={() => navigation.navigate('ForgotPassword' as never)}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      style={{ flex: 1 }}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}
+    >
+      <KeyboardAwareScrollView
+        contentContainerStyle={styles.scrollContent}
+        extraHeight={Platform.OS === 'ios' ? 60 : 20}
+        enableOnAndroid={true}
+        keyboardOpeningTime={0} // Agar scroll langsung mengikuti keyboard
+        extraScrollHeight={0} // Tambahan scroll sedikit lebih tinggi dari input
+        scrollIndicatorInsets={{ right: 1, left: 1 }} // Jika kamu ingin menghindari scroll indicator geser
       >
-        <Text style={styles.linkText}>Lupa password?</Text>
-      </TouchableOpacity>
+        <View style={styles.container}>
+          <Image
+            source={require('../../assets/images/logo1.png')}
+            style={styles.logo}
+          />
 
-      <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
-        <Text style={styles.loginText}>Login</Text>
-      </TouchableOpacity>
+          <Text style={styles.title}>Selamat Datang</Text>
 
-      <View style={styles.separatorContainer}>
-        <View style={styles.separator} />
-        <Text style={styles.separatorText}>atau</Text>
-        <View style={styles.separator} />
-      </View>
+          <CustomInput
+            style={styles.input}
+            placeholder="Username"
+            value={username}
+            onChangeText={setUsername}
+          />
 
-      <View style={{ flexDirection: 'row', marginTop: 20 }}>
-        <Text>Belum punya akun? </Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Register' as never)}
-        >
-          <Text style={{ color: '#8e7dff', fontWeight: 'bold' }}>Daftar</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Modal Error */}
-      <Modal
-        transparent
-        visible={showError}
-        animationType="fade"
-        onRequestClose={() => setShowError(false)}
-      >
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalBox}>
-            <View style={styles.errorCircle}>
-              <Text style={styles.errorX}>✕</Text>
-            </View>
-            <Text style={styles.modalTitle}>Terjadi Kesalahan!</Text>
-            <Text style={styles.modalMessage}>{errorMessage}</Text>
+          <View style={styles.passwordContainer}>
+            <CustomInput
+              style={styles.passwordInput}
+              placeholder="Password"
+              secureTextEntry={!showPassword}
+              value={password}
+              onChangeText={setPassword}
+            />
             <TouchableOpacity
-              style={styles.closeBtn}
-              onPress={() => setShowError(false)}
+              onPress={() => setShowPassword(!showPassword)}
+              style={styles.toggleBtn}
             >
-              <Text style={styles.closeText}>Tutup</Text>
+              <Text>{showPassword ? '🙈' : '👁️'}</Text>
             </TouchableOpacity>
           </View>
-        </View>
-      </Modal>
 
-      {/* Modal Sukses */}
-      <Modal transparent visible={showSuccess} animationType="fade">
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalBox}>
-            <View style={styles.successCircle}>
-              <Text style={styles.successCheck}>✓</Text>
-            </View>
-            <Text style={styles.modalTitle}>Berhasil!</Text>
-            <Text style={styles.modalMessage}>
-              Login berhasil, selamat datang kembali!
-            </Text>
-            {/* Tidak perlu tombol tutup karena otomatis navigasi */}
+          <TouchableOpacity
+            style={{ alignSelf: 'flex-end', marginBottom: 20 }}
+            onPress={() => navigation.navigate('ForgotPassword' as never)}
+          >
+            <Text style={styles.linkText}>Lupa password?</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
+            <Text style={styles.loginText}>Login</Text>
+          </TouchableOpacity>
+
+          <View style={styles.separatorContainer}>
+            <View style={styles.separator} />
+            <Text style={styles.separatorText}>atau</Text>
+            <View style={styles.separator} />
           </View>
+
+          <View style={{ flexDirection: 'row', marginTop: 20 }}>
+            <Text>Belum punya akun? </Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Register' as never)}
+            >
+              <Text style={{ color: '#8e7dff', fontWeight: 'bold' }}>
+                Daftar
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Modal Error */}
+          <Modal
+            transparent
+            visible={showError}
+            animationType="fade"
+            onRequestClose={() => setShowError(false)}
+          >
+            <View style={styles.modalOverlay}>
+              <View style={styles.modalBox}>
+                <View style={styles.errorCircle}>
+                  <Text style={styles.errorX}>✕</Text>
+                </View>
+                <Text style={styles.modalTitle}>Terjadi Kesalahan!</Text>
+                <Text style={styles.modalMessage}>{errorMessage}</Text>
+                <TouchableOpacity
+                  style={styles.closeBtn}
+                  onPress={() => setShowError(false)}
+                >
+                  <Text style={styles.closeText}>Tutup</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+
+          {/* Modal Sukses */}
+          <Modal transparent visible={showSuccess} animationType="fade">
+            <View style={styles.modalOverlay}>
+              <View style={styles.modalBox}>
+                <View style={styles.successCircle}>
+                  <Text style={styles.successCheck}>✓</Text>
+                </View>
+                <Text style={styles.modalTitle}>Berhasil!</Text>
+                <Text style={styles.modalMessage}>
+                  Login berhasil, selamat datang kembali!
+                </Text>
+                {/* Tidak perlu tombol tutup karena otomatis navigasi */}
+              </View>
+            </View>
+          </Modal>
         </View>
-      </Modal>
-    </View>
+      </KeyboardAwareScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
