@@ -7,6 +7,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
+    paddingVertical: 40,
+  },
+  scrollContent: {
+    minHeight: '100%',
+    // Tapi biasanya tidak perlu
+    // marginTop: 20,
+    // paddingVertical: 20,
   },
   logo: {
     width: 120,

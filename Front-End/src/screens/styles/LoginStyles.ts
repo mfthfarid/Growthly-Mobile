@@ -10,6 +10,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 20,
   },
+  scrollContent: {
+    // Jika kamu ingin isi scroll mengisi setidaknya tinggi layar penuh
+    // tambahkan ini:
+    minHeight: '100%',
+    // Tapi biasanya tidak perlu
+    // marginTop: 20,
+    // paddingVertical: 20,
+  },
   logo: {
     width: 120,
     height: 120,

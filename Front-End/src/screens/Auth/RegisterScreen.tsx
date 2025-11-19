@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, Modal } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Modal,
+  ScrollView,
+  Platform,
+  KeyboardAvoidingView,
+} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import CustomInput from '../../components/CustomInput';
 import styles from '../styles/RegisterStyles';
@@ -65,179 +75,196 @@ const RegisterScreen = ({ navigation }: any) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../../assets/images/logo1.png')}
-        style={styles.logo}
-      />
-      <Text style={styles.title}>Buat Akun Baru</Text>
-
-      <CustomInput
-        style={styles.input}
-        placeholder="Username"
-        value={name}
-        onChangeText={setName}
-      />
-      <CustomInput
-        style={styles.input}
-        placeholder="Nama Lengkap"
-        value={namaOrangtua}
-        onChangeText={setNamaOrangtua}
-      />
-      <CustomInput
-        style={styles.input}
-        placeholder="Nomor HP"
-        value={noHp}
-        onChangeText={setNoHp}
-        keyboardType="phone-pad"
-      />
-      <CustomInput
-        style={styles.input}
-        placeholder="Alamat"
-        value={alamat}
-        onChangeText={setAlamat}
-      />
-      <CustomInput
-        style={styles.input}
-        placeholder="Pendapatan (angka, misal: 2000000)"
-        value={pendapatan}
-        onChangeText={setPendapatan}
-        keyboardType="numeric"
-      />
-
-      {/* Wilayah */}
-      <View style={styles.input}>
-        <Text style={{ color: '#000' }}>Wilayah:</Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginTop: 10,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => setWilayah('dataran_rendah')}
-            style={[
-              styles.radioBtn,
-              wilayah === 'dataran_rendah' && styles.selectedRadio,
-            ]}
-          >
-            <Text>Dataran Rendah</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setWilayah('pegunungan')}
-            style={[
-              styles.radioBtn,
-              wilayah === 'pegunungan' && styles.selectedRadio,
-            ]}
-          >
-            <Text>Pegunungan</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      {/* Tanggal Lahir */}
-      <TouchableOpacity
-        style={styles.input}
-        onPress={() => setShowDatePicker(true)}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      style={{ flex: 1 }}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}
+    >
+      <KeyboardAwareScrollView
+        contentContainerStyle={[styles.scrollContent, { paddingBottom: 20 }]}
+        extraHeight={Platform.OS === 'ios' ? 60 : 20}
+        enableOnAndroid={true}
+        keyboardOpeningTime={0} // Agar scroll langsung mengikuti keyboard
+        extraScrollHeight={200} // Tambahan scroll sedikit lebih tinggi dari input
+        scrollIndicatorInsets={{ right: 1, left: 1 }} // Jika kamu ingin menghindari scroll indicator geser
       >
-        <Text style={{ color: dob ? '#000' : '#888' }}>
-          {dob ? dob.toLocaleDateString() : 'Tanggal Lahir'}
-        </Text>
-      </TouchableOpacity>
-      {showDatePicker && (
-        <DateTimePicker
-          value={dob || new Date()}
-          mode="date"
-          display="default"
-          onChange={(event, selectedDate) => {
-            setShowDatePicker(false);
-            if (selectedDate) setDob(selectedDate);
-          }}
-        />
-      )}
+        <View style={styles.container}>
+          <Image
+            source={require('../../assets/images/logo1.png')}
+            style={styles.logo}
+          />
+          <Text style={styles.title}>Buat Akun Baru</Text>
 
-      {/* Password */}
-      <View style={styles.passwordContainer}>
-        <CustomInput
-          style={styles.passwordInput}
-          placeholder="Password"
-          secureTextEntry={!showPassword}
-          value={password}
-          onChangeText={setPassword}
-        />
-        <TouchableOpacity
-          onPress={() => setShowPassword(!showPassword)}
-          style={styles.toggleBtn}
-        >
-          <Text>{showPassword ? '🙈' : '👁️'}</Text>
-        </TouchableOpacity>
-      </View>
+          <CustomInput
+            style={styles.input}
+            placeholder="Username"
+            value={name}
+            onChangeText={setName}
+          />
+          <CustomInput
+            style={styles.input}
+            placeholder="Nama Lengkap"
+            value={namaOrangtua}
+            onChangeText={setNamaOrangtua}
+          />
+          <CustomInput
+            style={styles.input}
+            placeholder="Nomor HP"
+            value={noHp}
+            onChangeText={setNoHp}
+            keyboardType="phone-pad"
+          />
+          <CustomInput
+            style={styles.input}
+            placeholder="Alamat"
+            value={alamat}
+            onChangeText={setAlamat}
+          />
+          <CustomInput
+            style={styles.input}
+            placeholder="Pendapatan (angka, misal: 2000000)"
+            value={pendapatan}
+            onChangeText={setPendapatan}
+            keyboardType="numeric"
+          />
 
-      <View style={styles.passwordContainer}>
-        <CustomInput
-          style={styles.passwordInput}
-          placeholder="Konfirmasi Password"
-          secureTextEntry={!showPassword}
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-        />
-        <TouchableOpacity
-          onPress={() => setShowPassword(!showPassword)}
-          style={styles.toggleBtn}
-        >
-          <Text>{showPassword ? '🙈' : '👁️'}</Text>
-        </TouchableOpacity>
-      </View>
-
-      <TouchableOpacity style={styles.registerBtn} onPress={handleRegister}>
-        <Text style={styles.registerText}>Daftar</Text>
-      </TouchableOpacity>
-
-      <View style={{ flexDirection: 'row', marginTop: 20 }}>
-        <Text>Sudah punya akun? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text style={[styles.linkText, { fontWeight: 'bold' }]}>Login</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* 🔴 Modal Error */}
-      <Modal
-        transparent
-        visible={showError}
-        animationType="fade"
-        onRequestClose={() => setShowError(false)}
-      >
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalBox}>
-            <View style={styles.errorCircle}>
-              <Text style={styles.errorX}>✕</Text>
-            </View>
-            <Text style={styles.modalTitle}>Terjadi Kesalahan!</Text>
-            <Text style={styles.modalMessage}>{errorMessage}</Text>
-            <TouchableOpacity
-              style={styles.closeBtn}
-              onPress={() => setShowError(false)}
+          {/* Wilayah */}
+          <View style={styles.input}>
+            <Text style={{ color: '#000' }}>Wilayah:</Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                marginTop: 10,
+              }}
             >
-              <Text style={styles.closeText}>Tutup</Text>
+              <TouchableOpacity
+                onPress={() => setWilayah('dataran_rendah')}
+                style={[
+                  styles.radioBtn,
+                  wilayah === 'dataran_rendah' && styles.selectedRadio,
+                ]}
+              >
+                <Text>Dataran Rendah</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => setWilayah('pegunungan')}
+                style={[
+                  styles.radioBtn,
+                  wilayah === 'pegunungan' && styles.selectedRadio,
+                ]}
+              >
+                <Text>Pegunungan</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* Tanggal Lahir */}
+          <TouchableOpacity
+            style={styles.input}
+            onPress={() => setShowDatePicker(true)}
+          >
+            <Text style={{ color: dob ? '#000' : '#888' }}>
+              {dob ? dob.toLocaleDateString() : 'Tanggal Lahir'}
+            </Text>
+          </TouchableOpacity>
+          {showDatePicker && (
+            <DateTimePicker
+              value={dob || new Date()}
+              mode="date"
+              display="default"
+              onChange={(event, selectedDate) => {
+                setShowDatePicker(false);
+                if (selectedDate) setDob(selectedDate);
+              }}
+            />
+          )}
+
+          {/* Password */}
+          <View style={styles.passwordContainer}>
+            <CustomInput
+              style={styles.passwordInput}
+              placeholder="Password"
+              secureTextEntry={!showPassword}
+              value={password}
+              onChangeText={setPassword}
+            />
+            <TouchableOpacity
+              onPress={() => setShowPassword(!showPassword)}
+              style={styles.toggleBtn}
+            >
+              <Text>{showPassword ? '🙈' : '👁️'}</Text>
             </TouchableOpacity>
           </View>
-        </View>
-      </Modal>
 
-      {/* 🟢 Modal Sukses */}
-      <Modal transparent visible={showSuccess} animationType="fade">
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalBox}>
-            <View style={styles.successCircle}>
-              <Text style={styles.successCheck}>✓</Text>
-            </View>
-            <Text style={styles.modalTitle}>Berhasil!</Text>
-            <Text style={styles.modalMessage}>Akun berhasil dibuat 🎉</Text>
+          <View style={styles.passwordContainer}>
+            <CustomInput
+              style={styles.passwordInput}
+              placeholder="Konfirmasi Password"
+              secureTextEntry={!showPassword}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+            />
+            <TouchableOpacity
+              onPress={() => setShowPassword(!showPassword)}
+              style={styles.toggleBtn}
+            >
+              <Text>{showPassword ? '🙈' : '👁️'}</Text>
+            </TouchableOpacity>
           </View>
+
+          <TouchableOpacity style={styles.registerBtn} onPress={handleRegister}>
+            <Text style={styles.registerText}>Daftar</Text>
+          </TouchableOpacity>
+
+          <View style={{ flexDirection: 'row', marginTop: 20 }}>
+            <Text>Sudah punya akun? </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <Text style={[styles.linkText, { fontWeight: 'bold' }]}>
+                Login
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* 🔴 Modal Error */}
+          <Modal
+            transparent
+            visible={showError}
+            animationType="fade"
+            onRequestClose={() => setShowError(false)}
+          >
+            <View style={styles.modalOverlay}>
+              <View style={styles.modalBox}>
+                <View style={styles.errorCircle}>
+                  <Text style={styles.errorX}>✕</Text>
+                </View>
+                <Text style={styles.modalTitle}>Terjadi Kesalahan!</Text>
+                <Text style={styles.modalMessage}>{errorMessage}</Text>
+                <TouchableOpacity
+                  style={styles.closeBtn}
+                  onPress={() => setShowError(false)}
+                >
+                  <Text style={styles.closeText}>Tutup</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+
+          {/* 🟢 Modal Sukses */}
+          <Modal transparent visible={showSuccess} animationType="fade">
+            <View style={styles.modalOverlay}>
+              <View style={styles.modalBox}>
+                <View style={styles.successCircle}>
+                  <Text style={styles.successCheck}>✓</Text>
+                </View>
+                <Text style={styles.modalTitle}>Berhasil!</Text>
+                <Text style={styles.modalMessage}>Akun berhasil dibuat 🎉</Text>
+              </View>
+            </View>
+          </Modal>
         </View>
-      </Modal>
-    </View>
+      </KeyboardAwareScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
