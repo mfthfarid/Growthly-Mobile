@@ -14,6 +14,7 @@ const orangtuaRoutes = require("./routes/orangtua");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const prediksiRoutes = require("./routes/prediksiRoutes");
+const rekomendasiRoutes = require("./routes/rekomendasiRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -47,7 +48,11 @@ app.use("/api/artikel", artikelRoutes);
 app.use("/api/orangtua", orangtuaRoutes);
 app.use("/api/pengukuran", pengukuranGiziRoutes);
 app.use("/api/dashboard", dashboardRoutes);
-app.use("/api/predict", prediksiRoutes); // Tambahkan ini
+
+// Prediksi
+app.use("/api/predict", prediksiRoutes); // Prediksi Stunting
+app.use("/api/recommend-food", rekomendasiRoutes); // Prediksi Makanan
+
 // Tambahkan ini agar folder uploads bisa diakses dari luar
 app.use("/images", express.static(path.join(__dirname, "uploads")));
 

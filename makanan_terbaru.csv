@@ -1,0 +1,259 @@
+Kategori,Nama Pangan,Wilayah Tumbuh,Kandungan Gizi Utama,Manfaat untuk Anak Stunting
+Buah,Pisang Ambon,Dataran Rendah,"Kalium, Vitamin B6, Serat",Meningkatkan energi dan mendukung pencernaan sehat
+Buah,Pisang Raja,Dataran Rendah,"Karbohidrat, Vitamin C, Kalium",Meningkatkan berat badan dan nafsu makan
+Buah,Pisang Kepok,Dataran Rendah,"Karbohidrat, Kalium, Vitamin B6",Sumber energi murah untuk MPASI
+Buah,Jambu Biji Merah,Dataran Rendah,"Vitamin C, Likopen, Serat",Meningkatkan penyerapan zat besi dan imunitas
+Buah,Jambu Kristal,Dataran Rendah,"Vitamin C, Serat, Air",Meningkatkan hidrasi dan pencernaan
+Buah,Mangga Arumanis,Dataran Rendah,"Beta-karoten, Vitamin C, Folat",Mendukung pertumbuhan sel dan kesehatan mata
+Buah,Mangga Gedong,Dataran Rendah,"Vitamin A, Vitamin C, Kalium",Meningkatkan imunitas dan penglihatan
+Buah,Pepaya California,Dataran Rendah,"Beta-karoten, Vitamin C, Enzim Papain",Meningkatkan pencernaan dan penyerapan nutrisi
+Buah,Pepaya Bangkok,Dataran Rendah,"Vitamin A, Serat, Kalium",Mendukung pertumbuhan dan imunitas
+Buah,Semangka,Dataran Rendah,"Air, Likopen, Vitamin A",Mencegah dehidrasi dan mendukung penglihatan
+Buah,Nangka,Dataran Rendah,"Karbohidrat, Vitamin A, Magnesium",Sumber energi dan mendukung pertumbuhan
+Buah,Nangka Muda,Dataran Rendah,"Serat, Zat Besi, Karbohidrat",Makanan lokal tinggi serat dan energi
+Buah,Rambutan,Dataran Rendah,"Zat Besi, Vitamin C, Tembaga",Membantu produksi hemoglobin
+Buah,Salak Bali,Dataran Rendah,"Zat Besi, Vitamin C, Serat",Meningkatkan pencernaan dan imunitas
+Buah,Duku,Dataran Rendah,"Vitamin C, Fosfor, Serat",Meningkatkan nafsu makan dan kesehatan gigi
+Buah,Langsat,Dataran Rendah,"Vitamin C, Serat, Antioksidan",Mendukung metabolisme dan imunitas
+Buah,Jambu Air Madu,Dataran Rendah,"Air, Vitamin C, Serat",Meningkatkan hidrasi dan pencernaan
+Buah,Jambu Air Citra,Dataran Rendah,"Vitamin C, Air, Antioksidan",Meningkatkan kesegaran dan imunitas
+Buah,Sawo Manila,Dataran Rendah,"Vitamin C, Karbohidrat, Kalsium",Meningkatkan energi dan kesehatan tulang
+Buah,Sawo Duren,Dataran Rendah,"Serat, Vitamin A, Kalium",Mendukung pencernaan dan penglihatan
+Buah,Kedondong,Dataran Rendah,"Vitamin C, Asam Organik, Kalsium",Meningkatkan nafsu makan
+Buah,Jeruk Siam,Dataran Rendah,"Vitamin C, Folat, Kalium",Meningkatkan penyerapan zat besi
+Buah,Jeruk Nipis,Dataran Rendah,"Vitamin C, Antioksidan",Meningkatkan rasa makanan dan penyerapan zat besi
+Buah,Belimbing Manis,Dataran Rendah,"Vitamin C, Antioksidan, Serat",Meningkatkan metabolisme dan imunitas
+Buah,Tomat Buah,Dataran Rendah,"Likopen, Vitamin C, Kalium",Meningkatkan penyerapan zat besi
+Buah,Anggur Hijau,Dataran Rendah,"Antioksidan, Vitamin K, Kalium",Mendukung kesehatan tulang
+Buah,Anggur Merah,Dataran Rendah,"Resveratrol, Vitamin C, Kalium",Mendukung sirkulasi darah dan imunitas
+Buah,Manggis,Dataran Rendah,"Xanthone, Vitamin C, Serat",Meningkatkan daya tahan tubuh
+Buah,Delima Merah,Dataran Rendah,"Antosianin, Vitamin C, Folat",Meningkatkan produksi sel darah merah
+Buah,Kesemek,Dataran Rendah,"Vitamin A, Vitamin C, Serat",Meningkatkan kesehatan mata dan pencernaan
+Buah,Pepino,Dataran Rendah,"Vitamin C, Kalium, Serat",Mendukung hidrasi dan imunitas
+Buah,Alpukat Mentega,Dataran Tinggi,"Lemak tak jenuh, Vitamin E, Kalium",Mendukung perkembangan otak dan kenaikan berat badan
+Buah,Alpukat Wina,Dataran Tinggi,"Lemak Sehat, Vitamin K, Folat",Mendukung pertumbuhan tulang dan sel
+Buah,Apel Manalagi,Dataran Tinggi,"Serat, Vitamin C, Quercetin",Mendukung pencernaan dan sistem imun
+Buah,Apel Rome Beauty,Dataran Tinggi,"Antioksidan, Vitamin C, Kalium",Meningkatkan fungsi sel sehat
+Buah,Markisa Ungu,Dataran Tinggi,"Vitamin A, Vitamin C, Serat",Mendukung kesehatan mata dan pencernaan
+Buah,Strawberry,Dataran Tinggi,"Vitamin C, Folat, Mangan",Meningkatkan produksi sel darah merah
+Buah,Blueberry,Dataran Tinggi,"Antosianin, Vitamin C, Serat",Meningkatkan fungsi kognitif
+Buah,Ceri Manis,Dataran Tinggi,"Vitamin C, Antioksidan, Kalium",Mendukung pertumbuhan sel sehat
+Buah,Kesemek,Dataran Tinggi,"Vitamin A, Vitamin C, Serat",Meningkatkan kesehatan mata dan pencernaan
+Buah,Anggur Hijau,Dataran Tinggi,"Antioksidan, Vitamin K, Kalium",Mendukung kesehatan tulang
+Buah,Anggur Merah,Dataran Tinggi,"Resveratrol, Vitamin C, Kalium",Mendukung sirkulasi darah dan imunitas
+Buah,Pepino,Dataran Tinggi,"Vitamin C, Kalium, Serat",Mendukung hidrasi dan imunitas
+Buah,Apel Fuji,Dataran Tinggi,"Serat, Vitamin C, Antioksidan",Mendukung pencernaan dan imunitas
+Buah,Pear,Dataran Tinggi,"Serat, Vitamin C, Kalium",Meningkatkan pencernaan dan hidrasi
+Buah,Kiwi,Dataran Tinggi,"Vitamin C, Vitamin K, Serat",Meningkatkan imunitas dan penyerapan zat besi
+Buah,Raspberry,Dataran Tinggi,"Vitamin C, Serat, Antioksidan",Mendukung pertumbuhan sel sehat
+Buah,Blackberry,Dataran Tinggi,"Antosianin, Vitamin C, Serat",Meningkatkan fungsi otak
+Buah,Cranberry,Dataran Tinggi,"Vitamin C, Antioksidan, Serat",Mendukung kesehatan saluran kemih dan imunitas
+Buah,Lemon,Dataran Tinggi,"Vitamin C, Antioksidan",Meningkatkan penyerapan zat besi
+Buah,Jeruk Navel,Dataran Tinggi,"Vitamin C, Folat, Kalium",Meningkatkan imunitas dan energi
+Buah,Pisang Cavendish,Umum,"Kalium, Vitamin B6, Karbohidrat",Sumber energi universal untuk MPASI
+Buah,Pisang Barangan,Umum,"Kalium, Vitamin C, Serat",Meningkatkan pencernaan dan energi
+Buah,Pisang Tanduk,Umum,"Karbohidrat, Kalium, Vitamin B6",Alternatif sumber energi tinggi
+Buah,Jambu Biji Putih,Umum,"Vitamin C, Serat, Air",Meningkatkan hidrasi dan imunitas
+Buah,Pepaya,Umum,"Beta-karoten, Vitamin C, Enzim Papain",Meningkatkan pencernaan dan vitamin A
+Buah,Mangga,Umum,"Vitamin A, Vitamin C, Folat",Mendukung pertumbuhan dan penglihatan
+Buah,Alpukat,Umum,"Lemak Sehat, Vitamin E, Kalium",Mendukung kenaikan berat badan dan otak
+Buah,Jeruk,Umum,"Vitamin C, Folat, Kalium",Meningkatkan penyerapan zat besi
+Buah,Semangka,Umum,"Air, Likopen, Vitamin A",Mencegah dehidrasi dan mendukung imunitas
+Buah,Nanas,Umum,"Vitamin C, Enzim Bromelain, Mangan",Meningkatkan pencernaan dan anti-inflamasi
+Buah,Pir,Umum,"Serat, Vitamin C, Kalium",Mendukung pencernaan dan hidrasi
+Buah,Apel,Umum,"Serat, Vitamin C, Antioksidan",Mendukung imunitas dan pencernaan
+Buah,Anggur,Umum,"Resveratrol, Vitamin C, Kalium",Meningkatkan sirkulasi dan antioksidan
+Buah,Tomat,Umum,"Likopen, Vitamin C, Kalium",Meningkatkan penyerapan zat besi
+Buah,Paprika Merah,Umum,"Vitamin C, Vitamin A, Antioksidan",Meningkatkan imunitas dan penglihatan
+Buah,Paprika Kuning,Umum,"Vitamin C, Folat, Kalium",Mendukung pertumbuhan sel
+Buah,Paprika Hijau,Umum,"Vitamin C, Serat, Vitamin K",Mendukung pencernaan dan pembekuan darah
+Buah,Melon,Umum,"Air, Vitamin A, Kalium",Mencegah dehidrasi dan mendukung penglihatan
+Buah,Kelapa Muda,Umum,"Elektrolit, Lemak Sehat, Kalium",Mendukung hidrasi dan energi
+Buah,Kurma,Umum,"Zat Besi, Kalium, Serat",Meningkatkan energi dan mencegah anemia
+Buah,Tin,Umum,"Serat, Kalsium, Vitamin K",Mendukung pencernaan dan tulang
+Sayuran,Bayam Hijau,Dataran Rendah,"Zat Besi, Asam Folat, Vitamin A",Mencegah anemia dan mendukung pertumbuhan
+Sayuran,Kangkung Air,Dataran Rendah,"Zat Besi, Kalsium, Vitamin A",Mendukung kesehatan darah dan tulang
+Sayuran,Kangkung Darat,Dataran Rendah,"Zat Besi, Vitamin C, Serat",Meningkatkan penyerapan zat besi
+Sayuran,Oyong,Dataran Rendah,"Vitamin A, Vitamin C, Folat",Mendukung pertumbuhan sel dan imunitas
+Sayuran,Terung Ungu,Dataran Rendah,"Serat, Antioksidan, Kalium",Mendukung kesehatan jantung dan pencernaan
+Sayuran,Terung Belanda,Dataran Rendah,"Vitamin C, Serat, Asam Organik",Meningkatkan nafsu makan
+Sayuran,Pare Hijau,Dataran Rendah,"Vitamin C, Zat Besi, Antioksidan",Meningkatkan nafsu makan dan imunitas
+Sayuran,Daun Singkong,Dataran Rendah,"Protein, Zat Besi, Kalsium",Mencegah anemia dan mendukung massa otot
+Sayuran,Daun Pepaya Muda,Dataran Rendah,"Enzim Papain, Zat Besi, Vitamin C",Meningkatkan pencernaan dan penyerapan zat besi
+Sayuran,Kemangi,Dataran Rendah,"Zat Besi, Vitamin A, Minyak Atsiri",Meningkatkan nafsu makan dan anti-inflamasi
+Sayuran,Petasan (Daun Talas),Dataran Rendah,"Serat, Zat Besi, Vitamin C",Meningkatkan pencernaan dan mencegah anemia
+Sayuran,Genjer,Dataran Rendah,"Serat, Zat Besi, Kalsium",Makanan tradisional tinggi zat besi
+Sayuran,Kenikir,Dataran Rendah,"Zat Besi, Vitamin C, Kalsium",Meningkatkan hemoglobin dan imunitas
+Sayuran,Pakis,Dataran Rendah,"Zat Besi, Vitamin A, Kalsium",Mendukung pertumbuhan dan kesehatan tulang
+Sayuran,Labu Siam,Dataran Rendah,"Serat, Vitamin C, Folat",Mendukung pencernaan dan pertumbuhan sel
+Sayuran,Waluh (Labu Kuning),Dataran Rendah,"Beta-karoten, Vitamin C, Serat",Meningkatkan asupan vitamin A
+Sayuran,Ubi Jalar Kuning,Dataran Rendah,"Beta-karoten, Vitamin C, Serat",Meningkatkan asupan vitamin A
+Sayuran,Ubi Jalar Putih,Dataran Rendah,"Karbohidrat, Serat, Kalium",Sumber energi alternatif
+Sayuran,Talas Sutera,Dataran Rendah,"Karbohidrat Kompleks, Serat, Vitamin E",Sumber energi sehat untuk pertumbuhan
+Sayuran,Jagung Manis,Dataran Rendah,"Karbohidrat, Folat, Magnesium",Mendukung pertumbuhan sel dan energi
+Sayuran,Jagung Putih,Dataran Rendah,"Karbohidrat, Serat, Vitamin B",Meningkatkan energi dan pencernaan
+Sayuran,Kacang Panjang Hijau,Dataran Rendah,"Protein Nabati, Serat, Zat Besi",Mendukung pertumbuhan otot dan mencegah anemia
+Sayuran,Kacang Panjang Ungu,Dataran Rendah,"Antosianin, Protein, Zat Besi",Meningkatkan nilai gizi sayur
+Sayuran,Buncis Hijau,Dataran Rendah,"Protein, Serat, Vitamin K",Mendukung pertumbuhan tulang dan pencernaan
+Sayuran,Buncis Ungu,Dataran Rendah,"Antosianin, Serat, Protein",Meningkatkan antioksidan dalam MPASI
+Sayuran,Wortel Lokal,Dataran Tinggi,"Beta-karoten, Serat, Vitamin K",Meningkatkan penglihatan dan imunitas
+Sayuran,Wortel Impor,Dataran Tinggi,"Beta-karoten, Vitamin A, Kalium",Mendukung pertumbuhan sel
+Sayuran,Kubis Putih,Dataran Tinggi,"Vitamin C, Serat, Kalsium",Mendukung pencernaan dan kesehatan tulang
+Sayuran,Kubis Ungu,Dataran Tinggi,"Antosianin, Vitamin C, Kalsium",Meningkatkan antioksidan dan imunitas
+Sayuran,Pakcoy,Dataran Tinggi,"Kalsium, Vitamin C, Vitamin K",Mendukung pertumbuhan tulang
+Sayuran,Sawi Hijau,Dataran Tinggi,"Zat Besi, Vitamin A, Kalsium",Mencegah anemia dan memperkuat tulang
+Sayuran,Sawi Putih,Dataran Tinggi,"Vitamin C, Serat, Kalsium",Mendukung pencernaan dan tulang
+Sayuran,Brokoli,Dataran Tinggi,"Vitamin C, Kalsium, Serat",Mendukung imunitas dan pertumbuhan tulang
+Sayuran,Kembang Kol,Dataran Tinggi,"Vitamin C, Serat, Folat",Mendukung pertumbuhan sel sehat
+Sayuran,Lobak Putih,Dataran Tinggi,"Vitamin C, Serat, Kalsium",Mendukung detoksifikasi dan pencernaan
+Sayuran,Lobak Merah,Dataran Tinggi,"Beta-karoten, Vitamin C, Serat",Meningkatkan asupan vitamin A
+Sayuran,Radish (Lobak Jepang),Dataran Tinggi,"Vitamin C, Serat, Kalium",Mendukung pencernaan dan hidrasi
+Sayuran,Seledri,Dataran Tinggi,"Vitamin K, Kalium, Antioksidan",Mendukung sirkulasi darah
+Sayuran,Daun Bawang,Dataran Tinggi,"Vitamin K, Vitamin C, Folat",Meningkatkan rasa dan nilai gizi
+Sayuran,Bawang Bombay,Dataran Tinggi,"Quercetin, Vitamin C, Serat",Anti-inflamasi dan imunitas
+Sayuran,Bawang Putih,Dataran Tinggi,"Allicin, Selenium, Vitamin B6",Meningkatkan imunitas dan anti-infeksi
+Sayuran,Jahe,Dataran Tinggi,"Gingerol, Antioksidan, Kalium",Meningkatkan nafsu makan dan pencernaan
+Sayuran,Kunyit,Dataran Tinggi,"Kurkumin, Antioksidan, Zat Besi",Anti-inflamasi dan peningkat imunitas
+Sayuran,Kentang Granola,Dataran Tinggi,"Karbohidrat, Vitamin C, Kalium",Sumber energi dan mendukung fungsi otot
+Sayuran,Kentang Atlantic,Dataran Tinggi,"Vitamin B6, Kalium, Serat",Mendukung metabolisme energi
+Sayuran,Ubi Jalar Ungu,Dataran Tinggi,"Antosianin, Serat, Vitamin A",Meningkatkan fungsi kognitif dan imunitas
+Sayuran,Bit Merah,Dataran Tinggi,"Folat, Zat Besi, Nitrat",Meningkatkan aliran darah dan energi
+Sayuran,Artichoke,Dataran Tinggi,"Serat, Vitamin C, Folat",Mendukung pencernaan dan hati
+Sayuran,Asparagus,Dataran Tinggi,"Folat, Vitamin K, Serat",Mendukung pertumbuhan sel dan tulang
+Sayuran,Bayam Merah,Dataran Tinggi,"Zat Besi, Vitamin A, Kalsium",Mendukung kesehatan darah dan tulang
+Sayuran,Selada Romaine,Dataran Tinggi,"Vitamin A, Vitamin K, Folat",Mendukung penglihatan dan pembekuan darah
+Sayuran,Selada Air,Dataran Tinggi,"Vitamin K, Kalsium, Antioksidan",Mendukung kesehatan tulang dan imunitas
+Sayuran,Daun Mint,Dataran Tinggi,"Vitamin A, Antioksidan, Serat",Meningkatkan pencernaan dan kesegaran
+Sayuran,Parsley,Dataran Tinggi,"Vitamin K, Vitamin C, Folat",Meningkatkan penyerapan zat besi
+Sayuran,Bayam,Umum,"Zat Besi, Asam Folat, Vitamin A",Mencegah anemia dan mendukung pertumbuhan
+Sayuran,Wortel,Umum,"Beta-karoten, Serat, Vitamin K",Meningkatkan penglihatan dan imunitas
+Sayuran,Kubis,Umum,"Vitamin C, Serat, Kalsium",Mendukung pencernaan dan kesehatan tulang
+Sayuran,Sawi,Umum,"Zat Besi, Vitamin A, Kalsium",Mencegah anemia dan memperkuat tulang
+Sayuran,Kangkung,Umum,"Zat Besi, Kalsium, Vitamin A",Mendukung kesehatan darah dan tulang
+Sayuran,Tomat,Umum,"Likopen, Vitamin C, Kalium",Meningkatkan penyerapan zat besi
+Sayuran,Terung,Umum,"Serat, Antioksidan, Kalium",Mendukung kesehatan jantung dan pencernaan
+Sayuran,Pare,Umum,"Vitamin C, Zat Besi, Antioksidan",Meningkatkan nafsu makan dan imunitas
+Sayuran,Labu Kuning,Umum,"Beta-karoten, Vitamin C, Serat",Meningkatkan asupan vitamin A
+Sayuran,Ubi Jalar,Umum,"Beta-karoten, Serat, Vitamin A",Mendukung pertumbuhan dan penglihatan
+Sayuran,Kentang,Umum,"Karbohidrat, Vitamin C, Kalium",Sumber energi sehat
+Sayuran,Buncis,Umum,"Protein, Serat, Vitamin K",Mendukung pertumbuhan tulang dan pencernaan
+Sayuran,Kacang Panjang,Umum,"Protein Nabati, Serat, Zat Besi",Mendukung pertumbuhan otot dan mencegah anemia
+Sayuran,Brokoli,Umum,"Vitamin C, Kalsium, Serat",Mendukung imunitas dan pertumbuhan tulang
+Sayuran,Kembang Kol,Umum,"Vitamin C, Serat, Folat",Mendukung pertumbuhan sel sehat
+Sayuran,Seledri,Umum,"Vitamin K, Kalium, Antioksidan",Mendukung sirkulasi darah
+Sayuran,Paprika,Umum,"Vitamin C, Vitamin A, Antioksidan",Meningkatkan imunitas dan penglihatan
+Sayuran,Jamur Tiram,Umum,"Protein, Serat, Vitamin D",Makanan fungsional penunjang imunitas
+Sayuran,Jamur Merang,Umum,"Protein, Zat Besi, Selenium",Mendukung pertumbuhan dan antioksidan
+Sayuran,Jamur Enoki,Umum,"Protein, Serat, Vitamin B",Meningkatkan pencernaan dan imunitas
+Sayuran,Jamur Shitake,Umum,"Vitamin D, Selenium, Serat",Meningkatkan imunitas dan kesehatan tulang
+Sayuran,Daun Kelor,Umum,"Zat Besi, Vitamin A, Kalsium",Superfood lokal untuk atasi stunting
+Sayuran,Tauge,Umum,"Vitamin C, Protein, Serat",Meningkatkan nilai gizi sayuran
+Sayuran,Lobak,Umum,"Vitamin C, Serat, Kalsium",Mendukung detoksifikasi dan pencernaan
+Sayuran,Bawang Merah,Umum,"Quercetin, Vitamin C, Zinc",Meningkatkan imunitas dan anti-inflamasi
+Sayuran,Bawang Putih,Umum,"Allicin, Selenium, Vitamin B6",Meningkatkan imunitas dan anti-infeksi
+Sayuran,Jahe,Umum,"Gingerol, Antioksidan, Kalium",Meningkatkan nafsu makan dan pencernaan
+Sayuran,Kunyit,Umum,"Kurkumin, Antioksidan, Zat Besi",Anti-inflamasi dan peningkat imunitas
+Sumber Pangan Lain,Telur Ayam Kampung,Umum,"Protein, Vitamin D, Kolin",Meningkatkan kecerdasan dan pertumbuhan
+Sumber Pangan Lain,Telur Ayam Ras,Umum,"Protein, Vitamin B12, Selenium",Mendukung pertumbuhan otot
+Sumber Pangan Lain,Telur Bebek,Umum,"Protein, Vitamin B12, Lemak Sehat",Meningkatkan berat badan dan energi
+Sumber Pangan Lain,Telur Puyuh,Umum,"Protein, Zinc, Vitamin B2",Meningkatkan nafsu makan dan pertumbuhan
+Sumber Pangan Lain,Ikan Lele,Dataran Rendah,"Protein, Omega-3, Zat Besi",Mendukung pertumbuhan fisik dan kognitif
+Sumber Pangan Lain,Ikan Patin,Dataran Rendah,"Protein, Omega-3, Vitamin D",Meningkatkan kecerdasan dan kesehatan tulang
+Sumber Pangan Lain,Ikan Nila,Dataran Rendah,"Protein, Fosfor, Vitamin B12",Mendukung pertumbuhan tulang dan otot
+Sumber Pangan Lain,Ikan Mas,Dataran Rendah,"Protein, Omega-3, Zat Besi",Meningkatkan daya tahan tubuh
+Sumber Pangan Lain,Ikan Gabus,Dataran Rendah,"Protein Albumin, Zat Besi",Meningkatkan kadar albumin dan pemulihan gizi
+Sumber Pangan Lain,Belut Sawah,Dataran Rendah,"Protein, Vitamin A, DHA",Meningkatkan berat badan dan fungsi otak
+Sumber Pangan Lain,Keong Sawah,Dataran Rendah,"Protein, Zat Besi, Zinc",Sumber protein lokal murah dan bergizi
+Sumber Pangan Lain,Ulat Jati,Dataran Rendah,"Protein Tinggi, Lemak Sehat",Makanan darurat kaya protein
+Sumber Pangan Lain,Ikan Tuna,Pesisir,"Protein, Omega-3, Selenium",Mendukung fungsi otak dan imunitas
+Sumber Pangan Lain,Ikan Tongkol,Pesisir,"Protein, Zat Besi, Vitamin B12",Mencegah anemia dan meningkatkan energi
+Sumber Pangan Lain,Ikan Kembung,Pesisir,"Protein, Omega-3, Kalsium",Mendukung pertumbuhan tulang dan otak
+Sumber Pangan Lain,Ikan Selar,Pesisir,"Protein, Vitamin D, Zat Besi",Mendukung pertumbuhan dan imunitas
+Sumber Pangan Lain,Ikan Kakap Merah,Pesisir,"Protein, Omega-3, Zinc",Meningkatkan nafsu makan dan pertumbuhan
+Sumber Pangan Lain,Udang Windu,Pesisir,"Protein, Zinc, Selenium",Meningkatkan nafsu makan dan pertumbuhan
+Sumber Pangan Lain,Udang Rebon,Pesisir,"Zinc, Kalsium, Protein",Sumber zinc murah untuk MPASI
+Sumber Pangan Lain,Cumi-Cumi,Pesisir,"Protein, Zat Besi, Vitamin B12",Mendukung produksi sel darah merah
+Sumber Pangan Lain,Gurita,Pesisir,"Protein, Taurin, Zinc",Mendukung perkembangan saraf
+Sumber Pangan Lain,Kerang Hijau,Pesisir,"Zinc, Protein, Zat Besi",Meningkatkan imunitas dan mencegah stunting
+Sumber Pangan Lain,Kerang Darah,Pesisir,"Zat Besi, Protein, Vitamin B12",Sangat efektif lawan anemia
+Sumber Pangan Lain,Rumput Laut,Pesisir,"Yodium, Kalsium, Serat",Mendukung fungsi tiroid dan pertumbuhan
+Sumber Pangan Lain,Ikan Asin Kecil,Pesisir,"Kalsium, Protein, Zat Besi",Sumber kalsium murah di pesisir
+Sumber Pangan Lain,Abon Ikan Tongkol,Pesisir,"Protein, Zat Besi, Zinc",MPASI kering tinggi gizi
+Sumber Pangan Lain,Kerupuk Ikan,Pesisir,"Protein, Kalsium, Omega-3",Camilan bergizi untuk anak
+Sumber Pangan Lain,Minyak Ikan,Pesisir,"Omega-3, Vitamin A, D",Mendukung pertumbuhan dan imunitas
+Sumber Pangan Lain,Tahu Putih,Umum,"Protein Nabati, Kalsium, Zat Besi",Murah dan tinggi protein untuk pertumbuhan
+Sumber Pangan Lain,Tahu Kuning,Umum,"Protein, Kalsium, Isoflavon",Mendukung pertumbuhan sel sehat
+Sumber Pangan Lain,Tempe Kedelai,Umum,"Protein, Probiotik, Vitamin B12",Meningkatkan pencernaan dan massa otot
+Sumber Pangan Lain,Tempe Lamtoro,Umum,"Protein, Serat, Zat Besi",Alternatif tempe lokal tinggi zat besi
+Sumber Pangan Lain,Kacang Hijau,Umum,"Protein, Zat Besi, Folat",Mendukung pertumbuhan dan mencegah anemia
+Sumber Pangan Lain,Kacang Tanah,Umum,"Lemak Sehat, Protein, Zinc",Meningkatkan berat badan dan imunitas
+Sumber Pangan Lain,Kacang Kedelai,Umum,"Protein, Kalsium, Isoflavon",Sumber protein nabati lengkap
+Sumber Pangan Lain,Kacang Merah,Umum,"Protein, Serat, Zat Besi",Mendukung energi dan mencegah anemia
+Sumber Pangan Lain,Kacang Hitam,Umum,"Protein, Antosianin, Zat Besi",Meningkatkan antioksidan dan hemoglobin
+Sumber Pangan Lain,Kacang Mete,Umum,"Lemak Sehat, Zinc, Magnesium",Meningkatkan nafsu makan dan energi
+Sumber Pangan Lain,Kacang Almond,Umum,"Lemak Sehat, Vitamin E, Zinc",Mendukung perkembangan otak
+Sumber Pangan Lain,Biji Wijen,Umum,"Kalsium, Lemak Sehat, Zinc",Meningkatkan kepadatan tulang
+Sumber Pangan Lain,Biji Labu,Umum,"Zinc, Magnesium, Lemak Sehat",Meningkatkan nafsu makan dan imunitas
+Sumber Pangan Lain,Biji Bunga Matahari,Umum,"Lemak Sehat, Vitamin E, Zinc",Mendukung pertumbuhan dan kulit sehat
+Sumber Pangan Lain,Susu Sapi,Umum,"Kalsium, Protein, Vitamin D",Mendukung pertumbuhan tulang dan gigi
+Sumber Pangan Lain,Susu Kambing,Umum,"Kalsium, Protein, Asam Lemak Medium Chain",Mudah dicerna dan mendukung berat badan
+Sumber Pangan Lain,Susu Domba,Umum,"Protein, Kalsium, Zinc",Meningkatkan massa tubuh
+Sumber Pangan Lain,Yoghurt Plain,Umum,"Probiotik, Kalsium, Protein",Meningkatkan pencernaan dan penyerapan nutrisi
+Sumber Pangan Lain,Keju Cheddar,Umum,"Kalsium, Protein, Fosfor",Mendukung kepadatan tulang
+Sumber Pangan Lain,Keju Cottage,Umum,"Protein, Kalsium, Rendah Lemak",Sumber protein tinggi untuk MPASI
+Sumber Pangan Lain,Hati Ayam,Umum,"Zat Besi, Vitamin A, Zinc",Sangat efektif melawan anemia dan stunting
+Sumber Pangan Lain,Hati Sapi,Umum,"Zat Besi, Vitamin B12, Protein",Meningkatkan hemoglobin dan pertumbuhan
+Sumber Pangan Lain,Daging Ayam,Umum,"Protein, Zinc, Niasin",Mendukung pertumbuhan otot dan imunitas
+Sumber Pangan Lain,Daging Sapi,Umum,"Protein, Zat Besi Heme, Zinc",Meningkatkan massa tubuh dan mencegah anemia
+Sumber Pangan Lain,Daging Kambing,Umum,"Protein, Zat Besi, Vitamin B12",Meningkatkan stamina dan pertumbuhan
+Sumber Pangan Lain,Sarden Kaleng,Umum,"Protein, Kalsium (dari tulang), Omega-3",Mudah diakses dan kaya gizi
+Sumber Pangan Lain,Abon Sapi,Umum,"Protein, Zat Besi, Zinc",Mudah disimpan dan tinggi protein
+Sumber Pangan Lain,Abon Lele,Umum,"Protein, Omega-3, Zat Besi",Alternatif abon lokal murah
+Sumber Pangan Lain,Minyak Kelapa Murni,Umum,"Lemak Medium Chain, Vitamin E",Meningkatkan kalori MPASI
+Sumber Pangan Lain,Madu Asli,Umum,"Enzim, Antioksidan, Gula Alami",Pemanis alami yang mendukung energi
+Sumber Pangan Lain,Gula Aren,Umum,"Zat Besi, Kalsium, Kalium",Pemanis lokal kaya mineral
+Sumber Pangan Lain,Tepung Mocaf,Umum,"Karbohidrat, Serat, Mudah Dicerna",Alternatif tepung bergizi untuk MPASI
+Sumber Pangan Lain,Tepung Beras Merah,Umum,"Serat, Vitamin B, Zat Besi",Meningkatkan nilai gizi MPASI
+Sumber Pangan Lain,Tepung Ubi Jalar,Umum,"Beta-karoten, Karbohidrat, Serat",MPASI kaya vitamin A
+Sumber Pangan Lain,Tepung Kacang Hijau,Umum,"Protein, Zat Besi, Karbohidrat Kompleks",MPASI lokal tinggi protein
+Sumber Pangan Lain,Tepung Daun Kelor,Umum,"Zat Besi, Vitamin A, Kalsium",Suplemen alami untuk MPASI
+Sumber Pangan Lain,Tepung Labu Kuning,Umum,"Beta-karoten, Serat, Vitamin C",MPASI kaya vitamin A
+Sumber Pangan Lain,Beras Merah,Umum,"Serat, Vitamin B, Zat Besi",Meningkatkan nilai gizi nasi
+Sumber Pangan Lain,Beras Hitam,Umum,"Antosianin, Protein, Zat Besi",Makanan fungsional tinggi antioksidan
+Sumber Pangan Lain,Beras Ketan Hitam,Umum,"Antosianin, Karbohidrat, Zat Besi",Makanan tradisional kaya zat besi
+Sumber Pangan Lain,Sorgum,Umum,"Protein, Zat Besi, Serat",Alternatif biji-bijian tahan iklim ekstrem
+Sumber Pangan Lain,Gandum,Umum,"Serat, Protein, Vitamin B",Meningkatkan variasi MPASI
+Sumber Pangan Lain,Oat,Umum,"Serat Larut, Protein, Zat Besi",Mendukung pencernaan dan kenyang lama
+Sumber Pangan Lain,Quinoa,Umum,"Protein Lengkap, Zat Besi, Magnesium",Makanan super tinggi protein
+Sumber Pangan Lain,Chia Seed,Umum,"Omega-3 Nabati, Serat, Kalsium",Meningkatkan nilai gizi MPASI
+Sumber Pangan Lain,Puree Alpukat,Umum,"Lemak Sehat, Vitamin E, Kalium",Mendukung kenaikan berat badan bayi
+Sumber Pangan Lain,Puree Ubi Ungu,Umum,"Antosianin, Vitamin A",Mendukung perkembangan otak bayi
+Sumber Pangan Lain,Bubur Kacang Hijau,Umum,"Protein, Zat Besi, Folat",Makanan pendamping ASI yang efektif
+Sumber Pangan Lain,Bubur Kacang Merah,Umum,"Zat Besi, Protein, Folat",Makanan pendamping ASI yang efektif
+Sumber Pangan Lain,Bubur Labu Kuning,Umum,"Vitamin A, Serat, Karbohidrat",MPASI kaya vitamin A
+Sumber Pangan Lain,Jus Wortel + Jeruk,Umum,Beta-karoten + Vitamin C,Meningkatkan penyerapan vitamin A
+Sumber Pangan Lain,Sop Bayam + Tempe,Umum,Zat Besi + Protein Nabati,Kombinasi lokal tinggi zat besi dan protein
+Sumber Pangan Lain,Sop Ikan + Sayur,Umum,Protein + Vitamin + Mineral,Menu seimbang untuk anak stunting
+Sumber Pangan Lain,Nasi Merah + Lauk + Sayur,Umum,Serat + Protein + Vitamin,Menu harian ideal untuk pemulihan stunting
+Sumber Pangan Lain,Puding Rumput Laut,Umum,"Yodium, Kalsium, Serat",Makanan selingan bergizi untuk anak
+Sumber Pangan Lain,Keripik Talas Panggang,Umum,"Serat, Karbohidrat Kompleks",Camilan sehat pengganti gorengan
+Sumber Pangan Lain,Selai Kacang Alami,Umum,"Lemak Sehat, Protein, Zinc",Camilan tinggi energi untuk anak stunting
+Sumber Pangan Lain,Susu Kedelai Fortifikasi,Umum,"Protein, Kalsium, Vitamin D",Alternatif susu untuk daerah non-peternakan
+Sumber Pangan Lain,Bubur Oat + Pisang,Umum,Serat + Kalium + Protein,MPASI modern bergizi
+Sumber Pangan Lain,Puding Tempe Manis,Umum,"Protein, Kalsium, Serat",Inovasi MPASI berbasis tempe
+Sumber Pangan Lain,Biskuit Tahu,Umum,"Protein, Kalsium",Makanan selingan tinggi protein
+Sumber Pangan Lain,Es Buah Campur,Umum,"Vitamin, Serat, Air",Camilan sehat penunjang hidrasi
+Sumber Pangan Lain,Selai Alpukat + Madu,Umum,Lemak Sehat + Antioksidan,Alternatif selai bergizi tinggi
+Sumber Pangan Lain,Bubur Jagung + Kacang Hijau,Umum,Energi + Protein + Zat Besi,MPASI tradisional bergizi seimbang
+Sumber Pangan Lain,Sayur Lodeh,Umum,Lemak Sehat + Serat + Vitamin,Makanan tradisional padat gizi
+Sumber Pangan Lain,Pepes Ikan,Umum,Protein + Zat Besi + Omega-3,Makanan lokal tinggi gizi
+Sumber Pangan Lain,Buntil Daun Singkong,Umum,Protein + Zat Besi + Serat,Makanan tradisional Jawa tinggi zat besi
+Sumber Pangan Lain,Lemper Isi Ayam,Umum,Karbohidrat + Protein,Makanan selingan energi tinggi
+Sumber Pangan Lain,Onde-onde Kacang Hijau,Umum,Karbohidrat + Protein + Serat,Camilan tradisional bergizi
+Sumber Pangan Lain,Kue Lapis Beras Merah,Umum,Serat + Zat Besi + Karbohidrat,MPASI selingan kaya serat
+Sumber Pangan Lain,Bubur Candil Ubi Ungu,Umum,Antosianin + Karbohidrat,Makanan tradisional kaya antioksidan
+Sumber Pangan Lain,Serabi Kuah Santan,Umum,Karbohidrat + Lemak Sehat,Meningkatkan kalori untuk anak kurus
+Sumber Pangan Lain,Klepon Gula Aren,Umum,Karbohidrat + Zat Besi,Makanan tradisional sumber energi dan mineral
+Sumber Pangan Lain,Nagasari Pisang,Umum,Karbohidrat + Kalium + Serat,Camilan sehat berbasis pisang
+Sumber Pangan Lain,Tiwul (Gaplek),Umum,"Karbohidrat, Serat, Kalsium",Makanan pengganti nasi di daerah kering
+Sumber Pangan Lain,Jagung Bisi,Umum,"Karbohidrat, Folat, Magnesium",Makanan pokok alternatif tinggi folat

@@ -4,17 +4,16 @@ const axios = require("axios");
 // URL server ML Flask
 const ML_API_URL = "http://127.0.0.1:5001/predict"; // Sesuaikan port jika berbeda
 
+// Gizi
 exports.predictStatusGizi = async (req, res) => {
   try {
     const { umur, jenis_kelamin, tinggi_badan } = req.body;
 
     // Validasi input dasar
     if (umur == null || jenis_kelamin == null || tinggi_badan == null) {
-      return res
-        .status(400)
-        .json({
-          message: "Umur, jenis kelamin, dan tinggi badan harus diisi.",
-        });
+      return res.status(400).json({
+        message: "Umur, jenis kelamin, dan tinggi badan harus diisi.",
+      });
     }
 
     // === KIRIM REQUEST KE SERVER ML ===
@@ -34,11 +33,41 @@ exports.predictStatusGizi = async (req, res) => {
       return res.status(error.response.status).json(error.response.data);
     }
     // Error jaringan atau lainnya (misalnya, server ML mati)
-    res
-      .status(500)
-      .json({
-        message: "Gagal menghubungi server prediksi.",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Gagal menghubungi server prediksi.",
+      error: error.message,
+    });
+  }
+};
+
+// Makanan
+exports.recommendFood = async (req, res) => {
+  try {
+    const { wilayah_tumbuh, jumlah } = req.body;
+
+    // Validasi input dasar
+    if (!wilayah_tumbuh) {
+      return res.status(400).json({ message: "Wilayah tumbuh harus diisi." });
+    }
+
+    // === KIRIM REQUEST KE SERVER ML ===
+    const response = await axios.post(ML_API_URL, {
+      wilayah_tumbuh: wilayah_tumbuh,
+      jumlah: jumlah ? parseInt(jumlah, 10) : 5, // default 5 jika tidak disertakan
+    });
+
+    // === KEMBALIKAN RESPON DARI SERVER ML ===
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error calling ML API (recommend-food):", error.message);
+    if (error.response) {
+      // Server ML mengembalikan error (4xx, 5xx)
+      return res.status(error.response.status).json(error.response.data);
+    }
+    // Error jaringan atau lainnya (misalnya, server ML mati)
+    res.status(500).json({
+      message: "Gagal menghubungi server rekomendasi makanan.",
+      error: error.message,
+    });
   }
 };
