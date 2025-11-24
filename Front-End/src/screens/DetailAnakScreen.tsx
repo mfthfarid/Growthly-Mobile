@@ -19,16 +19,6 @@ import { recommendFood, FoodRecommendationItem } from '../service/mlService';
 import PertumbuhanChart from '../components/PertumbuhanChart';
 import RekomendasiMakanan from '../components/RekomendasiMakanan';
 
-const getUserData = async (): Promise<User | null> => {
-  try {
-    const userData = await AsyncStorage.getItem('userData');
-    return userData ? JSON.parse(userData) : null;
-  } catch (e) {
-    console.error('Error fetching user data:', e);
-    return null;
-  }
-};
-
 // ✅ Tambahkan fungsi format tanggal
 const formatTanggal = (dateString: string): string => {
   // Cara 1: Format DD/MM/YYYY

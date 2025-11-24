@@ -15,6 +15,16 @@ export default function DetailMakananScreen({
 }: DetailMakananScreenProps) {
   console.log(route.params);
   const { food } = route.params;
+
+  // Validasi jika food tidak ada atau bukan objek
+  if (!food || typeof food !== 'object') {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.errorText}>Data makanan tidak ditemukan.</Text>
+      </View>
+    );
+  }
+
   const imageUrl = food.foto
     ? `${IMAGE_BASE_URL}/makanan/${food.foto}` // Gabung base URL + nama file
     : null;

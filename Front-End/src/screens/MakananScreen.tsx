@@ -20,17 +20,13 @@ export default function MakananScreen() {
   const [loading, setLoading] = React.useState(false);
 
   const fetchMakanan = async () => {
-    // console.log('🔄 fetchMakanan dipanggil...');
     try {
       setLoading(true);
       const response = await getMakanan();
-      // console.log('Response dari service (sudah JSON):', response);
 
       if (Array.isArray(response)) {
-        // console.log('✅ Menyimpan data ke state:', response);
         setMakanan(response);
       } else {
-        // console.warn('❌ Response bukan array:', response);
         setMakanan([]);
       }
     } catch (error: any) {
@@ -54,7 +50,10 @@ export default function MakananScreen() {
     return (
       <TouchableOpacity
         style={styles.card}
-        onPress={() => navigation.navigate('DetailMakanan', { food: item })}
+        onPress={() => {
+          console.log('Navigating with food:', item); // Tambahkan log ini
+          navigation.navigate('DetailMakanan', { food: item });
+        }}
       >
         {/* <Image source={{ uri: item.foto }} style={styles.image} /> */}
         {imageUrl ? (

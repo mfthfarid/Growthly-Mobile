@@ -361,7 +361,7 @@ export default function HomeScreen() {
     return (
       <TouchableOpacity
         style={styles.foodCard}
-        onPress={() => navigation.navigate('DetailMakanan', { makanan: item })}
+        onPress={() => navigation.navigate('DetailMakanan', { food: item })}
       >
         {imageUrl ? (
           <Image source={{ uri: imageUrl }} style={styles.foodImage} />

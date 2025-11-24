@@ -50,6 +50,12 @@ export default function EditProfileScreen() {
     loadUserData();
   }, []);
 
+  const getAvatarInitial = () => {
+    return user?.nama_orangtua
+      ? user.nama_orangtua.charAt(0).toUpperCase()
+      : '?';
+  };
+
   const handleSaveProfile = async () => {
     if (!nama || !noHp || !alamat) {
       setErrorMessage('Harap isi semua field profil');
@@ -124,11 +130,16 @@ export default function EditProfileScreen() {
   };
 
   return (
-    <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.container}>
-      <Image
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      {/* <Image
         source={{ uri: 'https://i.pravatar.cc/150?img=12' }}
         style={styles.avatar}
-      />
+      /> */}
+      <View style={styles.headerSection}>
+        <View style={styles.avatar}>
+          <Text style={styles.avatarText}>{getAvatarInitial()}</Text>
+        </View>
+      </View>
 
       {/* FORM PROFIL */}
       <CustomInput
