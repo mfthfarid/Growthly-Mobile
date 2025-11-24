@@ -39,35 +39,3 @@ exports.predictStatusGizi = async (req, res) => {
     });
   }
 };
-
-// Makanan
-exports.recommendFood = async (req, res) => {
-  try {
-    const { wilayah_tumbuh, jumlah } = req.body;
-
-    // Validasi input dasar
-    if (!wilayah_tumbuh) {
-      return res.status(400).json({ message: "Wilayah tumbuh harus diisi." });
-    }
-
-    // === KIRIM REQUEST KE SERVER ML ===
-    const response = await axios.post(ML_API_URL, {
-      wilayah_tumbuh: wilayah_tumbuh,
-      jumlah: jumlah ? parseInt(jumlah, 10) : 5, // default 5 jika tidak disertakan
-    });
-
-    // === KEMBALIKAN RESPON DARI SERVER ML ===
-    res.json(response.data);
-  } catch (error) {
-    console.error("Error calling ML API (recommend-food):", error.message);
-    if (error.response) {
-      // Server ML mengembalikan error (4xx, 5xx)
-      return res.status(error.response.status).json(error.response.data);
-    }
-    // Error jaringan atau lainnya (misalnya, server ML mati)
-    res.status(500).json({
-      message: "Gagal menghubungi server rekomendasi makanan.",
-      error: error.message,
-    });
-  }
-};

@@ -1,4 +1,16 @@
 // Type untuk Artikel
+export interface User {
+  id_user: number;
+  username: string;
+  id_orangtua: number;
+  nama_orangtua: string;
+  no_hp: string;
+  alamat: string;
+  pendapatan: string; // ENUM: "Rendah", "Sedang", "Tinggi"
+  wilayah: string; // ENUM: "Pegunungan", "Dataran Rendah", dll
+  role: string; // "admin", "orangtua"
+}
+
 export interface Artikel {
   id_artikel: number;
   judul: string;
@@ -45,6 +57,20 @@ export type Pengukuran = {
   updatedAt?: string; // hanya ada di response
 };
 
+// Rekomendasi Makanan
+export interface FoodRecommendationItem {
+  Kategori: string;
+  'Nama Pangan': string;
+  'Kandungan Gizi Utama': string;
+  'Manfaat untuk Anak Stunting': string;
+}
+
+export interface FoodRecommendationResponse {
+  wilayah_tumbuh: string;
+  rekomendasi: FoodRecommendationItem[];
+}
+
+// Prediksi
 export type AddPengukuranRequest = Pengukuran;
 
 export type AddPengukuranResponse = {

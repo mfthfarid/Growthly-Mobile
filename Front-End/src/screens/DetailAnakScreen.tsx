@@ -1,5 +1,6 @@
 // src/screens/DetailAnakScreen.tsx
 import React, { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import {
   View,
@@ -7,20 +8,16 @@ import {
   TouchableOpacity,
   FlatList,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import { styles } from './styles/DetailAnakScreenStyles';
 import { getPengukuranByBalita } from '../service/pengukuranService';
 import { Pengukuran } from '../types/types';
-import { getMyBalita } from '../service/balitaService';
+import { User, Balita } from '../types/types';
+// import { getMyBalita } from '../service/balitaService';
+import { recommendFood, FoodRecommendationItem } from '../service/mlService';
 import PertumbuhanChart from '../components/PertumbuhanChart';
-
-interface Balita {
-  id_balita: number;
-  id_orangtua: number;
-  nama_balita: string;
-  tgl_lahir: string;
-  jenis_kelamin: 'L' | 'P';
-}
+import RekomendasiMakanan from '../components/RekomendasiMakanan';
 
 // ✅ Tambahkan fungsi format tanggal
 const formatTanggal = (dateString: string): string => {
@@ -87,10 +84,17 @@ const getStatusGiziStyle = (status: string) => {
 export default function DetailAnakScreen({ route }: { route: any }) {
   const { dataAnak }: { dataAnak: Balita } = route.params;
   const navigation = useNavigation<any>();
-
   const [loading, setLoading] = useState(true);
+
   const [pengukuran, setPengukuran] = useState<Pengukuran[]>([]);
   const [umur, setUmur] = useState<string>('');
+
+  const [rekomendasi, setRekomendasi] = useState<
+    FoodRecommendationItem[] | null
+  >(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const [showRecommendation, setShowRecommendation] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,8 +112,69 @@ export default function DetailAnakScreen({ route }: { route: any }) {
     fetchData();
   }, [dataAnak.id_balita]);
 
-  const handleUpdate = () => {
-    navigation.navigate('UpdateAnak', { dataAnak: dataAnak });
+  // Rekomendasi Makanan
+  const handleRecommend = async () => {
+    // Jika sudah ada rekomendasi, langsung tampilkan modal
+    if (rekomendasi && rekomendasi.length > 0) {
+      setModalVisible(true);
+      return;
+    }
+
+    // Jika belum ada, fetch data
+    setLoading(true);
+
+    try {
+      const user = await AsyncStorage.getItem('userData');
+      if (!user) {
+        Alert.alert(
+          'Error',
+          'Data pengguna tidak ditemukan. Silakan login kembali.',
+        );
+        return;
+      }
+      const parsedUser: User = JSON.parse(user);
+
+      const result = await recommendFood({
+        wilayah_tumbuh: parsedUser.wilayah,
+        jumlah: 10,
+      });
+      setRekomendasi(result.rekomendasi);
+      setModalVisible(true); // Buka modal setelah data diterima
+    } catch (error) {
+      Alert.alert('Error', (error as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Refresh Makanan
+  const handleRefresh = async () => {
+    // Reset rekomendasi dan langsung fetch ulang
+    setRekomendasi(null); // Kosongkan dulu
+    setModalVisible(true); // Biarkan modal tetap terbuka atau buka lagi
+    setLoading(true);
+
+    try {
+      const user = await AsyncStorage.getItem('userData');
+      if (!user) {
+        Alert.alert(
+          'Error',
+          'Data pengguna tidak ditemukan. Silakan login kembali.',
+        );
+        return;
+      }
+      const parsedUser: User = JSON.parse(user);
+
+      const result = await recommendFood({
+        wilayah_tumbuh: parsedUser.wilayah,
+        jumlah: 5,
+      });
+      setRekomendasi(result.rekomendasi);
+    } catch (error) {
+      Alert.alert('Error', (error as Error).message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Komponen header yang akan ditampilkan di atas list pengukuran
@@ -214,15 +279,16 @@ export default function DetailAnakScreen({ route }: { route: any }) {
 
       {/* BUTTONS */}
       <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.editButton} onPress={handleUpdate}>
-          <Text style={styles.editButtonText}>✏️ Edit Data</Text>
-        </TouchableOpacity>
-        {/* <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => navigation.navigate('Pengukuran')}
+        {/* Tombol untuk menampilkan rekomendasi */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleRecommend}
+          disabled={loading}
         >
-          <Text style={styles.addButtonText}>➕ Tambah Ukur</Text>
-        </TouchableOpacity> */}
+          <Text style={styles.buttonText}>
+            {loading ? 'Memuat...' : 'Rekomendasikan Makanan'}
+          </Text>
+        </TouchableOpacity>
       </View>
 
       {/* CHART */}
@@ -296,17 +362,28 @@ export default function DetailAnakScreen({ route }: { route: any }) {
   }
 
   return (
-    <FlatList
-      style={styles.container}
-      ListHeaderComponent={ListHeader}
-      data={sortedPengukuran}
-      renderItem={renderPengukuran}
-      keyExtractor={(item, index) =>
-        item.id_gizi?.toString() || `pengukuran-${index}`
-      }
-      ListEmptyComponent={renderEmptyState}
-      contentContainerStyle={{ paddingBottom: 24 }}
-      scrollIndicatorInsets={{ right: 1 }}
-    />
+    <>
+      <FlatList
+        style={styles.container}
+        ListHeaderComponent={ListHeader}
+        data={sortedPengukuran}
+        renderItem={renderPengukuran}
+        keyExtractor={(item, index) =>
+          item.id_gizi?.toString() || `pengukuran-${index}`
+        }
+        ListEmptyComponent={renderEmptyState}
+        contentContainerStyle={{ paddingBottom: 24 }}
+        scrollIndicatorInsets={{ right: 1 }}
+      />
+
+      {/* ✅ Panggil komponen rekomendasi di sini */}
+      <RekomendasiMakanan
+        visible={modalVisible}
+        loading={loading}
+        rekomendasi={rekomendasi || []}
+        onClose={() => setModalVisible(false)}
+        onRefresh={handleRefresh}
+      />
+    </>
   );
 }

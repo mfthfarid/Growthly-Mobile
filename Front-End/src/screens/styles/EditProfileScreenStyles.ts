@@ -3,8 +3,9 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#f8f9fa',
+    paddingHorizontal: 20,
+    paddingBottom: 40,
   },
   title: {
     fontSize: 22,
@@ -12,14 +13,29 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
   },
+  headerSection: {
+    alignItems: 'center',
+    paddingVertical: 2,
+    paddingTop: 35,
+  },
   avatar: {
-    width: 110,
-    height: 110,
-    borderRadius: 55,
-    alignSelf: 'center',
-    marginBottom: 25,
-    borderWidth: 2,
-    borderColor: '#007bff',
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    backgroundColor: '#b67be9ff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowRadius: 10,
+  },
+
+  avatarText: {
+    fontSize: 48,
+    color: '#fff',
+    fontWeight: '700',
   },
   input: {
     backgroundColor: '#fff',
