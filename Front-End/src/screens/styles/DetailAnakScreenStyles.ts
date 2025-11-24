@@ -66,7 +66,9 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#1a1a1a',
     textAlign: 'center',
-  }, // Umur Stack Container
+  },
+
+  // Umur Stack Container
   umurStackContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -131,38 +133,60 @@ export const styles = StyleSheet.create({
 
   // ===== BUTTONS =====
   buttonRow: {
-    flexDirection: 'row',
-    gap: 12,
+    // flexDirection: 'row',
     marginHorizontal: 16,
-    marginVertical: 16,
+    marginBottom: 16,
+    // gap: 12,
+    // marginVertical: 16,
   },
-  editButton: {
-    flex: 1,
-    backgroundColor: '#7b2cbf',
-    paddingVertical: 14,
-    borderRadius: 10,
+  button: {
+    backgroundColor: '#27ae60',
+    padding: 16,
+    borderRadius: 8,
     alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 3,
+    // marginVertical: 20,
   },
-  editButtonText: {
-    color: '#fff',
-    fontWeight: '700',
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+
+  // Rekomendasi Makanan
+  rekomendasiContainer: {
+    marginTop: 20,
+  },
+  card: {
+    backgroundColor: 'white',
+    padding: 16,
+    marginBottom: 12,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  namaPangan: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+  },
+  kategori: {
     fontSize: 14,
+    color: '#7f8c8d',
+    marginTop: 4,
   },
-  addButton: {
-    flex: 1,
-    backgroundColor: '#28a745',
-    paddingVertical: 14,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 3,
-  },
-  addButtonText: {
-    color: '#fff',
-    fontWeight: '700',
+  gizi: {
     fontSize: 14,
+    color: '#3498db',
+    marginTop: 4,
+  },
+  manfaat: {
+    fontSize: 14,
+    color: '#27ae60',
+    marginTop: 4,
+    fontStyle: 'italic',
   },
 
   // ===== CHART SECTION =====
