@@ -190,8 +190,7 @@ const Report = () => {
                   onChange={(e) => setStatusFilter(e.target.value)} // Filter berdasarkan status_gizi
                   className="pl-10 pr-10 py-2.5 w-full sm:w-48 border-2 border-gray-200 rounded-xl text-sm 
                                    focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 
-                                   hover:border-gray-300 transition-all bg-white appearance-none cursor-pointer"
-                >
+                                   hover:border-gray-300 transition-all bg-white appearance-none cursor-pointer">
                   <option value="">Semua Status Gizi</option>
                   <option value="stunted">📉 Stunted</option>
                   <option value="severely-stunted">📉 Severely Stunted</option>
@@ -203,8 +202,7 @@ const Report = () => {
                     className="w-5 h-5 text-gray-400"
                     fill="none"
                     stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                    viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -226,13 +224,11 @@ const Report = () => {
                   Pencarian: "{searchQuery}"
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="hover:bg-orange-200 rounded-full p-0.5 transition-colors"
-                  >
+                    className="hover:bg-orange-200 rounded-full p-0.5 transition-colors">
                     <svg
                       className="w-3 h-3"
                       fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
+                      viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"
                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -247,21 +243,18 @@ const Report = () => {
                   className={`inline-flex items-center gap-2 px-3 py-1.5 ${
                     statusGiziMap[statusFilter]?.color ||
                     "bg-gray-100 text-gray-700"
-                  } rounded-lg text-xs font-medium`}
-                >
+                  } rounded-lg text-xs font-medium`}>
                   <FaFilter className="w-3 h-3" />
                   Filter: {getFilterLabel(statusFilter)}
                   <button
                     onClick={() => setStatusFilter("")}
                     className={`${
                       statusGiziMap[statusFilter]?.hover || "hover:bg-gray-200"
-                    } rounded-full p-0.5 transition-colors`}
-                  >
+                    } rounded-full p-0.5 transition-colors`}>
                     <svg
                       className="w-3 h-3"
                       fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
+                      viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"
                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -289,8 +282,7 @@ const StatCard = ({ title, value, subtitle, icon, gradient }) => (
   <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 transform hover:-translate-y-1 group">
     <div className="flex items-start justify-between mb-4">
       <div
-        className={`bg-gradient-to-br ${gradient} p-3 rounded-xl text-white shadow-lg group-hover:scale-110 transition-transform`}
-      >
+        className={`bg-gradient-to-br ${gradient} p-3 rounded-xl text-white shadow-lg group-hover:scale-110 transition-transform`}>
         {icon}
       </div>
     </div>

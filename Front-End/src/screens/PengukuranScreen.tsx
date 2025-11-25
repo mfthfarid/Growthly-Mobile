@@ -130,11 +130,11 @@ export default function PengukuranScreen() {
       case 'Normal':
         return 'Normal';
       case 'Severely Stunted':
-        return 'Gizi Buruk'; // Atau sesuaikan
+        return 'Severely Stunted'; // Atau sesuaikan
       case 'Stunted':
-        return 'Gizi Kurang'; // Atau sesuaikan
+        return 'Stunted'; // Atau sesuaikan
       case 'Tinggi':
-        return 'Normal'; // Atau buat status baru di database jika perlu
+        return 'Tinggi'; // Atau buat status baru di database jika perlu
       default:
         return 'Normal'; // Fallback
     }

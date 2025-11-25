@@ -32,7 +32,16 @@ export default function AnakScreen() {
   const fetchDataAnak = async () => {
     try {
       const response = await getMyBalita();
-      setDataAnak(response.balitas || []);
+      const anakArray = response.balitas || [];
+
+      // Urutkan berdasarkan tanggal lahir (dari yang paling muda ke paling tua)
+      const sortedAnak = anakArray.sort((a: Balita, b: Balita) => {
+        return (
+          new Date(a.tgl_lahir).getTime() - new Date(b.tgl_lahir).getTime()
+        );
+      });
+
+      setDataAnak(sortedAnak);
     } catch (error) {
       console.error('Gagal mengambil data anak:', error);
     } finally {
@@ -47,7 +56,17 @@ export default function AnakScreen() {
   useFocusEffect(
     useCallback(() => {
       if (route.params?.newBalita) {
-        setDataAnak(prev => [route.params.newBalita, ...prev]);
+        setDataAnak(prev => {
+          // Tambahkan anak baru ke array
+          const updated = [route.params.newBalita, ...prev];
+
+          // Urutkan kembali
+          return updated.sort((a, b) => {
+            return (
+              new Date(b.tgl_lahir).getTime() - new Date(a.tgl_lahir).getTime()
+            );
+          });
+        });
         navigation.setParams({ newBalita: undefined });
       }
     }, [route.params?.newBalita]),
