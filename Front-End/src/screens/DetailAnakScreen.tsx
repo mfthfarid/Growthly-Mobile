@@ -58,20 +58,21 @@ const getStatusGiziStyle = (status: string) => {
         backgroundColor: { backgroundColor: '#d4edda' },
         textColor: { color: '#155724' },
       };
-    case 'Gizi Buruk':
+    case 'Severely Stunted':
       return {
         backgroundColor: { backgroundColor: '#f8d7da' },
         textColor: { color: '#721c24' },
       };
-    case 'Gizi Kurang':
+    case 'Stunted':
       return {
         backgroundColor: { backgroundColor: '#fff3cd' },
         textColor: { color: '#856404' },
       };
-    case 'Stunting':
+    case 'Tinggi':
       return {
-        backgroundColor: { backgroundColor: '#e2e3e5' },
-        textColor: { color: '#383d41' },
+        backgroundColor: { backgroundColor: '#cdf1ffff' },
+        // textColor: { color: '#383d41' },
+        textColor: { color: '#045c85ff' },
       };
     default:
       return {
