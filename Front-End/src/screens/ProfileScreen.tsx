@@ -114,7 +114,7 @@ export default function ProfileScreen({ onLogout }: any) {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.buttonLogout} onPress={handleLogout}>
-          <Text style={styles.buttonText}>🚪 Logout</Text>
+          <Text style={styles.buttonText}>🚪 Keluar</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
