@@ -167,7 +167,7 @@ export default function DetailAnakScreen({ route }: { route: any }) {
 
       const result = await recommendFood({
         wilayah_tumbuh: parsedUser.wilayah,
-        jumlah: 5,
+        jumlah: 10,
       });
       setRekomendasi(result.rekomendasi);
     } catch (error) {

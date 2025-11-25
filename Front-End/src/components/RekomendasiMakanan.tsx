@@ -1,4 +1,3 @@
-// components/RekomendasiMakanan.tsx
 import React from 'react';
 import {
   View,
@@ -15,9 +14,9 @@ import { FoodRecommendationItem } from '../types/types';
 interface RekomendasiMakananProps {
   visible: boolean;
   loading: boolean;
-  rekomendasi: FoodRecommendationItem[]; // Harus array, bukan null
+  rekomendasi: FoodRecommendationItem[];
   onClose: () => void;
-  onRefresh?: () => void; // ✅ Tambahkan ini
+  onRefresh?: () => void;
 }
 
 const RekomendasiMakanan: React.FC<RekomendasiMakananProps> = ({
@@ -25,63 +24,94 @@ const RekomendasiMakanan: React.FC<RekomendasiMakananProps> = ({
   loading,
   rekomendasi,
   onClose,
-  onRefresh, // ✅ Gunakan prop ini
+  onRefresh,
 }) => {
-  if (loading) {
-    return (
-      <Modal visible={visible} transparent={true} animationType="fade">
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <ActivityIndicator size="large" color="#27ae60" />
-            <Text style={styles.loadingText}>Memuat rekomendasi...</Text>
-          </View>
+  const renderLoadingState = () => (
+    <Modal visible={visible} transparent animationType="fade">
+      <View style={styles.modalOverlay}>
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="#27ae60" />
+          <Text style={styles.loadingText}>Memuat rekomendasi...</Text>
         </View>
-      </Modal>
-    );
-  }
+      </View>
+    </Modal>
+  );
 
-  const renderFoodItem = ({ item }: { item: FoodRecommendationItem }) => (
-    <View style={styles.card}>
-      <Text style={styles.namaPangan}>{item['Nama Pangan']}</Text>
-      <Text style={styles.kategori}>Kategori: {item.Kategori}</Text>
-      <Text style={styles.gizi}>Gizi: {item['Kandungan Gizi Utama']}</Text>
-      <Text style={styles.manfaat}>
-        Manfaat: {item['Manfaat untuk Anak Stunting']}
-      </Text>
+  const FoodCard = ({ item }: { item: FoodRecommendationItem }) => (
+    <View style={styles.foodCard}>
+      <Text style={styles.foodName}>{item['Nama Pangan']}</Text>
+
+      <View style={styles.foodInfo}>
+        <View style={styles.infoRow}>
+          <Text style={styles.infoLabel}>Kategori:</Text>
+          <Text style={styles.infoValue}>{item.Kategori}</Text>
+        </View>
+
+        <View style={styles.infoRow}>
+          <Text style={styles.infoLabel}>Gizi:</Text>
+          <Text style={styles.infoValue}>{item['Kandungan Gizi Utama']}</Text>
+        </View>
+
+        <View style={styles.infoRow}>
+          <Text style={styles.infoLabel}>Manfaat:</Text>
+          <Text style={styles.infoValue}>
+            {item['Manfaat untuk Anak Stunting']}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 
-  return (
-    <Modal visible={visible} transparent={true} animationType="slide">
-      <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>
-          <Text style={styles.modalTitle}>Rekomendasi Makanan</Text>
+  const renderEmptyState = () => (
+    <View style={styles.emptyContainer}>
+      <Icon name="restaurant" size={48} color="#bdc3c7" />
+      <Text style={styles.emptyText}>Tidak ada rekomendasi tersedia</Text>
+    </View>
+  );
 
+  if (loading) {
+    return renderLoadingState();
+  }
+
+  return (
+    <Modal visible={visible} transparent animationType="slide">
+      <View style={styles.modalOverlay}>
+        <View style={styles.modalContent}>
+          {/* HEADER */}
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>🥗 Rekomendasi Makanan</Text>
+          </View>
+
+          {/* CONTENT */}
           {rekomendasi.length > 0 ? (
             <FlatList
               data={rekomendasi}
-              renderItem={renderFoodItem}
-              keyExtractor={(_, index) => index.toString()}
+              renderItem={FoodCard}
+              keyExtractor={(_, index) => `food-${index}`}
               showsVerticalScrollIndicator={false}
+              contentContainerStyle={styles.listContent}
             />
           ) : (
-            <Text style={styles.noData}>Tidak ada rekomendasi.</Text>
+            renderEmptyState()
           )}
 
-          {/* Tombol Tutup dan Ulangi dalam satu baris */}
-          <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-              <Icon name="close" size={20} color="white" />
-              <Text style={styles.closeButtonText}>Tutup</Text>
+          {/* BUTTONS */}
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={[styles.button, styles.closeButton]}
+              onPress={onClose}
+            >
+              <Icon name="close" size={18} color="#fff" />
+              <Text style={styles.buttonText}>Tutup</Text>
             </TouchableOpacity>
 
-            {onRefresh && ( // ✅ Render hanya jika onRefresh diberikan
+            {onRefresh && (
               <TouchableOpacity
-                style={styles.refreshButton}
+                style={[styles.button, styles.refreshButton]}
                 onPress={onRefresh}
               >
-                <Icon name="refresh" size={20} color="white" />
-                <Text style={styles.refreshButtonText}>Ulangi</Text>
+                <Icon name="refresh" size={18} color="#fff" />
+                <Text style={styles.buttonText}>Ulangi</Text>
               </TouchableOpacity>
             )}
           </View>
@@ -92,98 +122,151 @@ const RekomendasiMakanan: React.FC<RekomendasiMakananProps> = ({
 };
 
 const styles = StyleSheet.create({
-  modalContainer: {
+  modalOverlay: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
+
+  loadingContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  loadingText: {
+    marginTop: 12,
+    fontSize: 14,
+    color: '#2c3e50',
+    fontWeight: '500',
+  },
+
+  // ===== MODAL CONTENT =====
   modalContent: {
     width: '90%',
-    maxHeight: '80%',
-    backgroundColor: 'white',
-    borderRadius: 10,
-    padding: 16,
-  },
-  modalTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 16,
-    textAlign: 'center',
-    color: '#2c3e50',
-  },
-  loadingText: {
-    marginTop: 10,
-    fontSize: 16,
-  },
-  card: {
-    backgroundColor: 'white',
-    padding: 12,
-    marginBottom: 12,
-    borderRadius: 8,
+    maxHeight: '85%',
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    overflow: 'hidden',
+    elevation: 8,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
-    borderWidth: 1,
-    borderColor: '#eee',
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
   },
-  namaPangan: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#2c3e50',
+
+  header: {
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ecf0f1',
   },
-  kategori: {
-    fontSize: 14,
-    color: '#7f8c8d',
-    marginTop: 4,
-  },
-  gizi: {
-    fontSize: 14,
-    color: '#3498db',
-    marginTop: 4,
-  },
-  manfaat: {
-    fontSize: 14,
-    color: '#27ae60',
-    marginTop: 4,
-    fontStyle: 'italic',
-  },
-  noData: {
+
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#1a1a1a',
     textAlign: 'center',
-    color: '#95a5a6',
-    fontStyle: 'italic',
-    marginVertical: 20,
   },
-  buttonRow: {
+
+  listContent: {
+    padding: 16,
+    gap: 12,
+  },
+
+  // ===== FOOD CARD =====
+  foodCard: {
+    backgroundColor: '#f8f9fa',
+    borderRadius: 12,
+    padding: 14,
+    borderLeftWidth: 4,
+    borderLeftColor: '#27ae60',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+  },
+
+  foodName: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#1a1a1a',
+    marginBottom: 10,
+  },
+
+  foodInfo: {
+    gap: 8,
+  },
+
+  infoRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
   },
+
+  infoLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#7f8c8d',
+    width: '30%',
+    textTransform: 'uppercase',
+    letterSpacing: 0.3,
+  },
+
+  infoValue: {
+    fontSize: 13,
+    color: '#2c3e50',
+    flex: 1,
+    fontWeight: '500',
+  },
+
+  // ===== EMPTY STATE =====
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 40,
+  },
+
+  emptyText: {
+    marginTop: 12,
+    fontSize: 14,
+    color: '#95a5a6',
+    fontWeight: '500',
+  },
+
+  // ===== BUTTONS =====
+  buttonContainer: {
+    flexDirection: 'row',
+    gap: 12,
+    padding: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#ecf0f1',
+  },
+
+  button: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingVertical: 12,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 6,
+    elevation: 2,
+  },
+
   closeButton: {
     backgroundColor: '#e74c3c',
-    padding: 12,
-    borderRadius: 8,
-    flex: 1,
-    marginRight: 5,
   },
-  closeButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
+
   refreshButton: {
-    backgroundColor: '#f39c12',
-    padding: 12,
-    borderRadius: 8,
-    flex: 1,
-    marginLeft: 5,
+    backgroundColor: '#27ae60',
   },
-  refreshButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+
+  buttonText: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 13,
   },
 });
 
