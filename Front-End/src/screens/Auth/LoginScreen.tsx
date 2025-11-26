@@ -182,7 +182,6 @@ const LoginScreen = ({ onLogin }: any) => {
                 <Text style={styles.modalMessage}>
                   Login berhasil, selamat datang kembali!
                 </Text>
-                {/* Tidak perlu tombol tutup karena otomatis navigasi */}
               </View>
             </View>
           </Modal>
