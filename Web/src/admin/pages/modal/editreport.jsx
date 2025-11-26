@@ -76,8 +76,7 @@ const EditPengukuranModal = ({
             </div>
             <button
               onClick={onClose}
-              className="text-white/80 hover:text-white hover:bg-white/20 p-2 rounded-lg transition-all"
-            >
+              className="text-white/80 hover:text-white hover:bg-white/20 p-2 rounded-lg transition-all">
               <FaTimes className="w-5 h-5" />
             </button>
           </div>
@@ -182,8 +181,7 @@ const EditPengukuranModal = ({
                   className="w-5 h-5 text-gray-400 group-focus-within:text-purple-600 transition-colors"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
+                  stroke="currentColor">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -199,21 +197,19 @@ const EditPengukuranModal = ({
                 required
                 className="w-full pl-11 pr-10 py-3 border-2 border-gray-200 rounded-xl text-sm text-gray-700 
                          focus:border-purple-500 focus:ring-2 focus:ring-purple-200 
-                         hover:border-gray-300 transition-all outline-none bg-gray-50 focus:bg-white appearance-none cursor-pointer"
-              >
+                         hover:border-gray-300 transition-all outline-none bg-gray-50 focus:bg-white appearance-none cursor-pointer">
                 <option value="">Pilih Status Gizi</option>
                 <option value="normal">Normal</option>
                 <option value="tinggi">Tinggi</option>
                 <option value="stunted">Stunted</option>
-                <option value="severely-stunted">Severely Stunted</option>
+                <option value="severely stunted">Severely Stunted</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                 <svg
                   className="w-5 h-5 text-gray-400"
                   fill="none"
                   stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                  viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -274,14 +270,12 @@ const EditPengukuranModal = ({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-5 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-all duration-200 border border-gray-300"
-            >
+              className="flex-1 px-5 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-all duration-200 border border-gray-300">
               Batal
             </button>
             <button
               type="submit"
-              className="flex-1 px-5 py-3 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-700 hover:via-indigo-700 hover:to-blue-700 text-white font-bold rounded-xl transition-all duration-200 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105 active:scale-95"
-            >
+              className="flex-1 px-5 py-3 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-700 hover:via-indigo-700 hover:to-blue-700 text-white font-bold rounded-xl transition-all duration-200 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105 active:scale-95">
               Simpan Perubahan
             </button>
           </div>
