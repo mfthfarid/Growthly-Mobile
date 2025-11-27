@@ -1,8 +1,8 @@
 // src/service/apiService.ts
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const API_BASE_URL = 'http://10.10.5.152:5000/api';
-export const IMAGE_BASE_URL = 'http://10.10.5.152:5000/images';
+const API_BASE_URL = 'http://192.168.1.7:5000/api';
+export const IMAGE_BASE_URL = 'http://192.168.1.7:5000/images';
 
 export const request = async (endpoint: string, options: RequestInit = {}) => {
   // 🔑 Ambil token dari AsyncStorage

@@ -10,7 +10,7 @@ import {
   FaVideo,
   FaSignOutAlt,
 } from "react-icons/fa";
-import Logo from "../assets/logo_putih.png";
+import Logo from "../assets/NewLogo.png";
 
 const Sidebar = () => {
   const handleLogoutClick = (event) => {
@@ -63,8 +63,7 @@ const Sidebar = () => {
     <aside
       className={`fixed top-0 left-0 z-50 h-screen flex flex-col
       bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900
-      text-white shadow-2xl w-64 transition-all duration-300`}
-    >
+      text-white shadow-2xl w-64 transition-all duration-300`}>
       {/* Header dengan logo */}
       <div className="flex items-center gap-3 px-5 py-5 border-b border-purple-700/50 bg-black/10">
         <div className="bg-white p-2 rounded-xl shadow-lg hover:scale-105 transition-transform duration-200">
@@ -95,8 +94,7 @@ const Sidebar = () => {
                         ? "bg-white text-purple-900 shadow-lg shadow-purple-500/20 scale-105"
                         : "text-purple-100 hover:bg-white/10 hover:translate-x-1"
                     }`
-                  }
-                >
+                  }>
                   {({ isActive }) => (
                     <>
                       {/* Icon */}
@@ -106,8 +104,7 @@ const Sidebar = () => {
                           isActive
                             ? `bg-gradient-to-br ${item.color}`
                             : "bg-transparent group-hover:bg-white/20"
-                        }`}
-                      >
+                        }`}>
                         <Icon
                           className={`w-5 h-5 ${
                             isActive
@@ -137,8 +134,7 @@ const Sidebar = () => {
       <div className="p-3 border-t border-purple-700/50 bg-black/10">
         <button
           onClick={handleLogoutClick}
-          className="group w-full flex items-center px-3 py-3 text-sm font-medium text-purple-100 hover:bg-red-500/20 hover:text-white rounded-xl transition-all duration-300 hover:scale-105 border border-transparent hover:border-red-500/30"
-        >
+          className="group w-full flex items-center px-3 py-3 text-sm font-medium text-purple-100 hover:bg-red-500/20 hover:text-white rounded-xl transition-all duration-300 hover:scale-105 border border-transparent hover:border-red-500/30">
           <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-red-500/20 group-hover:bg-red-500 transition-all duration-300">
             <FaSignOutAlt className="w-5 h-5 text-red-400 group-hover:text-white transition-colors duration-300" />
           </div>
