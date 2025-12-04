@@ -260,8 +260,7 @@ const Tableadmin = ({ searchQuery, roleFilter }) => {
         const statusInfo = statusMap[row.status_gizi] || statusMap["–"];
         return (
           <span
-            className={`inline-flex items-center justify-center px-3 py-1.5 ${statusInfo.color} rounded-full text-xs font-semibold`}
-          >
+            className={`inline-flex items-center justify-center px-3 py-1.5 ${statusInfo.color} rounded-full text-xs font-semibold`}>
             {statusInfo.label}
           </span>
         );
@@ -275,15 +274,13 @@ const Tableadmin = ({ searchQuery, roleFilter }) => {
           <button
             onClick={() => handleEdit(row.id_user)}
             className="p-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
-            title="Edit Data"
-          >
+            title="Edit Data">
             <FaEdit className="w-4 h-4" />
           </button>
           <button
             onClick={() => handleDelete(row.id_user)}
             className="p-2.5 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
-            title="Hapus Data"
-          >
+            title="Hapus Data">
             <FaTrash className="w-4 h-4" />
           </button>
         </div>

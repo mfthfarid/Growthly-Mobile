@@ -140,7 +140,7 @@ const CustomTable = ({
         text: "text-yellow-700",
         icon: "⚠",
       },
-      "severely-stunted": {
+      "severely stunted": {
         label: "Severely Stunted",
         bg: "bg-red-100",
         text: "text-red-700",
@@ -158,8 +158,7 @@ const CustomTable = ({
     const config = statusConfig[key] || statusConfig.normal;
     return (
       <span
-        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${config.bg} ${config.text}`}
-      >
+        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${config.bg} ${config.text}`}>
         <span>{config.icon}</span>
         {config.label}
       </span>
@@ -277,15 +276,13 @@ const CustomTable = ({
           <button
             onClick={() => handleEdit(row)}
             className="p-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
-            title="Edit Data"
-          >
+            title="Edit Data">
             <FaEdit className="w-4 h-4" />
           </button>
           <button
             onClick={() => handleDelete(row.id_gizi)}
             className="p-2.5 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
-            title="Hapus Data"
-          >
+            title="Hapus Data">
             <FaTrash className="w-4 h-4" />
           </button>
         </div>

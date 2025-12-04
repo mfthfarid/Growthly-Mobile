@@ -21,7 +21,7 @@ const RegisterScreen = ({ navigation }: any) => {
   const [noHp, setNoHp] = useState('');
   const [alamat, setAlamat] = useState('');
   const [pendapatan, setPendapatan] = useState<string>('');
-  const [wilayah, setWilayah] = useState<'dataran_rendah' | 'pegunungan'>(
+  const [wilayah, setWilayah] = useState<'dataran_rendah' | 'dataran_tinggi'>(
     'dataran_rendah',
   );
   const [dob, setDob] = useState<Date | null>(null);
@@ -148,13 +148,13 @@ const RegisterScreen = ({ navigation }: any) => {
                 <Text>Dataran Rendah</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => setWilayah('pegunungan')}
+                onPress={() => setWilayah('dataran_tinggi')}
                 style={[
                   styles.radioBtn,
-                  wilayah === 'pegunungan' && styles.selectedRadio,
+                  wilayah === 'dataran_tinggi' && styles.selectedRadio,
                 ]}
               >
-                <Text>Pegunungan</Text>
+                <Text>Dataran Tinggi</Text>
               </TouchableOpacity>
             </View>
           </View>

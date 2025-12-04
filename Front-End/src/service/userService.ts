@@ -7,7 +7,7 @@ export const registerUser = async (userData: {
   no_hp: string;
   alamat: string;
   pendapatan: number;
-  wilayah: 'dataran_rendah' | 'pegunungan';
+  wilayah: 'dataran_rendah' | 'dataran_tinggi';
 }) => {
   return request('/auth/register', {
     method: 'POST',
